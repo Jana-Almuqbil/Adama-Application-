@@ -1,0 +1,80 @@
+.terms-container {
+    --background: linear-gradient(to bottom, #FFB6B9, #FAE3D9, #F5E2D8, #BFD6CF, #61C0BF);
+    --padding-bottom: 80px;
+  }
+  
+  .terms-header {
+    background-color: #FAE3D9;
+    padding-top: 100px;
+    padding-bottom: 10px;
+    border-bottom-left-radius: 30px; 
+    border-bottom-right-radius: 30px;
+    display: flex;
+    align-items: center;
+    
+    ion-title {
+      font-weight: bold;
+      font-size: 24px;
+      color: #0F5252;
+      margin-top: 80px;
+    }
+
+    ion-back-button{
+      color: #0F5252;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+  }
+  
+  .terms-content {
+    padding: 0px 20px 0px 20px;
+    color: #0F52529E;
+
+    .last-updated {
+      font-size: 16px;
+      color: #0F52529E;
+    }
+  
+    .section-title {
+      color: #0F5252;
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    ol {
+      list-style: none;
+      counter-reset: section;
+      padding-left: 10px; 
+    }
+        
+    ol > li {
+      counter-increment: section;
+      position: relative;
+      padding-left: 20px;
+    }
+        
+    ol > li::before {
+      content: counter(section) ".";
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      color: #0F5252;
+    }
+  
+    li {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+  
+    ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+  
+    strong {
+      color: #0F5252;
+    }
+  }
+
+  

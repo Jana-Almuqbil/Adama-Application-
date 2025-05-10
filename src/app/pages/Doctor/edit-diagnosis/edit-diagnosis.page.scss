@@ -1,0 +1,93 @@
+.custom-header {
+    background: #FAE3D9 !important;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    height: 110px;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  
+  
+  .back-button {
+    position: absolute;
+    left: 20px; /* Moves it to the left */
+    top: 50%;
+    transform: translateY(-50%);
+    background: white !important;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-button ion-icon {
+    color: #145C46 !important;
+    font-size: 20px;
+  }
+  
+  
+  .header-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #145C46 !important;
+    text-align: center;
+    flex-grow: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+.edit-diagnosis-content {
+    --padding-top: 130px;
+    padding: 16px;
+  }
+  
+  .input-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+  }
+  
+  ion-card-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #145C46;
+  }
+  
+  ion-textarea {
+    --background: #fdfdfd;
+    --padding-start: 12px;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    color: #333;
+  }
+  
+  .button-group {
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+  
+  .save-btn {
+      --background: linear-gradient(180deg, #61C0BF, #0F5252) !important;
+      --color: white;
+      font-size: 18px;
+      border-radius: 20px !important;
+      overflow: hidden;  display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    
+  }
+  

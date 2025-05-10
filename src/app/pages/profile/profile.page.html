@@ -1,0 +1,100 @@
+<!-- ========== Header ========== -->
+<ion-header class="custom-header">
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <h1 class="header-title">Profiles</h1>
+  <ion-buttons slot="end">
+    <ion-icon name="notifications-outline" class="header-icon" routerLink="/notification"></ion-icon>
+  </ion-buttons>
+</ion-header>
+
+<!-- ========== Main Content ========== -->
+<ion-content class="gradient-bg">
+  <div class="profile-container">
+
+    <!-- Parent Info Section -->
+    <div class="user-info">
+      <div class="image-container">
+        <img src="assets/mom.jpg" class="user-img" />
+        <ion-icon name="create-outline" class="edit-icon" (click)="editParentInfo()"></ion-icon>
+      </div>
+      <h2>Mom Asma</h2>
+      <p>Asma&#64;gmail.com</p>
+    </div>
+
+    <!-- Baby Profiles Section -->
+    <div class="baby-profiles">
+      <p class="section-title">Select Baby Profile</p>
+      <div class="baby-list">
+        <div class="baby-card selected">
+          <div class="baby-img-wrapper selected">
+            <img src="assets/profile.png" class="baby-img" />
+          </div>
+          <p>Naif</p>
+        </div>
+        <div class="baby-card">
+          <div class="baby-img-wrapper">
+            <img src="assets/profile2.webp" class="baby-img" />
+          </div>
+          <p>Nora</p>
+        </div>
+        <div class="baby-card add">
+          <div class="add-circle">
+            <ion-icon name="add-outline"></ion-icon>
+          </div>
+          <p>Add Baby</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Baby Profile Form Fields -->
+    <ion-list class="form-list">
+      <ion-item lines="none" class="profile-field">
+        <ion-icon name="person-outline" slot="start" color="dark"></ion-icon>
+        <ion-input [value]="profile.name"></ion-input>
+      </ion-item>
+      
+      <ion-item lines="none" class="profile-field">
+        <ion-icon name="calendar-outline" slot="start" color="dark"></ion-icon>
+        <ion-input [value]="profile.dob"></ion-input>
+      </ion-item>
+      
+      <ion-item lines="none" class="profile-field">
+        <ion-icon name="male-outline" slot="start" color="dark"></ion-icon>
+        <ion-input [value]="profile.gender"></ion-input>
+      </ion-item>   
+
+      <!-- Allergies Section -->
+      <ion-item class="allergies-item" lines="none">
+        <ion-label position="stacked">Allergies</ion-label>
+        <div class="allergies-content">
+          <div class="check-icon">
+            <ion-icon name="checkmark" class="checkmark-icon"></ion-icon>
+          </div>
+          <p class="allergy-text">{{ profile.allergies }}</p>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <!-- Toggle Default Profile -->
+    <div class="default-toggle">
+      <ion-label>Set as default profile</ion-label>
+      <ion-toggle color="tertiary"></ion-toggle>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <ion-button expand="block" class="edit-btn" fill="solid">
+        Edit Profile
+      </ion-button>
+    
+      <ion-button expand="block" class="delete-btn" fill="solid">
+        Delete Profile
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

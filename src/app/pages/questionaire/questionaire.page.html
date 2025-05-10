@@ -1,0 +1,88 @@
+<ion-header class="custom-header">
+  <!-- Back Button -->
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <!-- Title -->
+  <h1 class="header-title">Body Affected</h1>
+</ion-header>
+
+<ion-content class="gradient-background custom-content" [fullscreen]="true">
+  <!-- Progress Bar -->
+  <div class="stepper-wrapper">
+    <div class="step" *ngFor="let label of stepLabels; let i = index">
+      <div class="circle" [class.active]="currentStep === i + 1" [class.completed]="currentStep > i + 1">
+        <ion-icon *ngIf="currentStep > i + 1" name="checkmark-outline"></ion-icon>
+        <span *ngIf="currentStep <= i + 1">{{ i + 1 }}</span>
+      </div>
+      <p [class.active]="currentStep === i + 1">{{ label }}</p>
+      <div class="line" *ngIf="i < stepLabels.length - 1" [class.active]="currentStep > i + 1"></div>
+    </div>
+  </div>
+
+  <!-- Question Card -->
+  <div class="question-card">
+    <p class="question-title">How much of the body is affected?</p>
+  </div>
+
+  <div class="card-container">
+    <ion-card 
+      button="true"
+      class="select-card"
+      [class.selected]="selectedCardIndex === 0"
+      (click)="selectCard(0)">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="assets/oneArea.png" alt="one Area" loading="lazy">
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Single Spot</h2>
+          <p class="card-description">A single growth or spot</p>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <ion-card 
+      button="true"
+      class="select-card"
+      [class.selected]="selectedCardIndex === 1"
+      (click)="selectCard(1)">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="assets/MultipleArea.png" alt="Limited Area" loading="lazy">
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Limited Area</h2>
+          <p class="card-description">Multiple spots or rash involving 1 or more areas of the body</p>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+
+    <ion-card 
+      button="true"
+      class="select-card"
+      [class.selected]="selectedCardIndex === 2"
+      (click)="selectCard(2)">
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <img src="assets/widespread.png" alt="widespread" loading="lazy">
+        </ion-avatar>
+        <ion-label>
+          <h2 class="card-title">Widespread</h2>
+          <p class="card-description">Affecting most of the body</p>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer class="transparent-footer">
+  <div class="button-container">
+    <ion-button expand="block" class="action-btn" fill="solid" (click)="storeAnswers()">
+      NEXT
+    </ion-button>
+  </div>
+</ion-footer>

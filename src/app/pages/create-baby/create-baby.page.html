@@ -1,0 +1,86 @@
+
+<ion-content class="signup-container">
+  <h2 class="title">Create Baby Profile</h2>
+
+  <!-- Profile Image -->
+  <div class="profile-container">
+    <img *ngIf="babyImage; else defaultImage" [src]="babyImage" alt="Baby Profile Picture" class="profile-img" />
+    <ng-template #defaultImage>
+      <img src="assets/images/profile-avater.png" alt="Default Baby Profile Picture" class="profile-img" />
+    </ng-template>
+    
+    <input type="file" accept="image/*" hidden (change)="selectImage($event)" #fileInput />
+    <ion-icon name="camera-outline" class="camera-icon" (click)="fileInput.click()"></ion-icon>
+  </div>
+
+  <!-- Baby Name Input -->
+  <ion-item class="input-field">
+    <ion-icon name="person-outline" slot="start"></ion-icon>
+    <ion-input 
+      type="text" 
+      placeholder="Enter baby name" 
+      [(ngModel)]="babyName" 
+      name="babyName">
+    </ion-input>
+  </ion-item>
+
+  <!-- Birthdate -->
+  <ion-item class="input-field" (click)="openCalendar()">
+    <ion-icon name="calendar-outline" slot="start"></ion-icon>
+    <ion-label *ngIf="!babyBirthdate">Select baby's birth date</ion-label>
+    <ion-label *ngIf="babyBirthdate">{{ babyBirthdate }}</ion-label>
+  </ion-item>
+
+  <!-- Drop-down Calendar -->
+  <div *ngIf="isCalendarOpen" class="calendar-dropdown">
+    <ion-datetime
+      presentation="date"
+      (ionChange)="selectDate($event)"
+      [value]="babyBirthdate"
+      color="light"
+    ></ion-datetime>
+    <ion-button expand="block" (click)="closeCalendar()">Confirm</ion-button>
+  </div>
+
+  <!-- Gender Selector -->
+  <ion-item class="input-field" lines="none">
+    <ion-icon name="male-female-outline" slot="start"></ion-icon>
+    <ion-radio-group [(ngModel)]="gender" name="gender" class="gender-radio-group">
+      <ion-item lines="none" class="radio-inline">
+        <ion-radio slot="start" value="Male" class="custom-radio"></ion-radio>
+        <ion-label>Male</ion-label>
+      </ion-item>
+      
+      <ion-item lines="none" class="radio-inline">
+        <ion-radio slot="start" value="Female" class="custom-radio"></ion-radio>
+        <ion-label>Female</ion-label>
+      </ion-item>
+    </ion-radio-group>
+  </ion-item>
+
+  <!-- Allergies Input -->
+  <div class="allergy-box">
+    <label class="allergy-title">Does your baby have any known allergies?</label>
+    <div class="allergy-options">
+      <ion-item lines="none" *ngFor="let allergy of allergies" class="allergy-item">
+        <ion-checkbox slot="start" [(ngModel)]="allergy.checked" [name]="allergy.name"></ion-checkbox>
+        <ion-label>{{ allergy.name }}</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+  <!-- Default Toggle -->
+  <div class="default-profile-box">
+    <ion-item lines="none" class="toggle-container">
+      <ion-label>Set as default profile</ion-label>
+      <ion-toggle [(ngModel)]="isDefault" name="isDefault"></ion-toggle>
+    </ion-item>
+  </div>
+
+  <!-- Create Profile Button -->
+
+  <ion-text color="danger" *ngIf="showErrorMessage" class="error-message">
+    <p>All fields must be filled out to create the profile.</p>
+  </ion-text>
+  <ion-button expand="full" class="signup-btn" (click)="createProfile()">Create Profile</ion-button>
+</ion-content>

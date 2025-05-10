@@ -1,0 +1,136 @@
+<!-- PARENT MENU -->
+<ion-menu *ngIf="userRole === 'parent'" side="start" menuId="main-menu" contentId="main-content" swipeGesture="true">
+  <ion-content class="menu-content">
+    <div class="menu-header"(click)="goToSelectBaby()">
+      <img src="assets/profile.png" class="menu-profile-pic" alt="Profile">
+      <p class="menu-profile-name"> Baby {{babyId}}</p>
+    </div>
+
+    <ion-list class="menu-list">
+      <p class="category-title">Categories</p>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/home" class="menu-item" lines="none">
+          <ion-icon slot="start" name="home-outline"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item (click)="takePhotoFromMenu()" class="menu-item" lines="none">
+          <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+          <ion-label>New Diagnosis</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/notification" class="menu-item" lines="none">
+          <ion-icon slot="start" name="notifications-outline"></ion-icon>
+          <ion-label>Notifications</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/history" class="menu-item" lines="none">
+          <ion-icon slot="start" name="time-outline"></ion-icon>
+          <ion-label>History</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/verification-status" class="menu-item" lines="none">
+          <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+          <ion-label>Verification Status</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+
+    <ion-list class="menu-list">
+      <p class="category-title">Help & Settings</p>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/settings" class="menu-item" lines="none">
+          <ion-icon slot="start" name="settings-outline"></ion-icon>
+          <ion-label>Settings</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/support" class="menu-item" lines="none">
+          <ion-icon slot="start" name="help-circle-outline"></ion-icon>
+          <ion-label>Support</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/login" class="menu-item" lines="none">
+          <ion-icon slot="start" name="log-out-outline"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- DOCTOR MENU -->
+<ion-menu *ngIf="userRole === 'doctor'" side="start" menuId="doctor-menu" contentId="main-content" swipeGesture="true">
+  <ion-content class="menu-content">
+    <div class="menu-header">
+      <img src="assets/doctor.jpg" class="menu-profile-pic" alt="Doctor">
+      <p class="menu-profile-name">Dr. Ahmed Malik</p>
+    </div>
+
+    <ion-list class="menu-list">
+      <p class="category-title">Categories</p>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/doctor-home" class="menu-item" lines="none">
+          <ion-icon slot="start" name="home-outline"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/doctor-notification" class="menu-item" lines="none">
+          <ion-icon slot="start" name="notifications-outline"></ion-icon>
+          <ion-label>Notifications</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/verified-cases" class="menu-item" lines="none">
+          <ion-icon slot="start" name="checkmark-done-outline"></ion-icon>
+          <ion-label>Verified Cases</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+
+    <ion-list class="menu-list">
+      <p class="category-title">Help & Settings</p>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/settings" class="menu-item" lines="none">
+          <ion-icon slot="start" name="settings-outline"></ion-icon>
+          <ion-label>Setting</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/support" class="menu-item" lines="none">
+          <ion-icon slot="start" name="help-circle-outline"></ion-icon>
+          <ion-label>Support</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+      <ion-menu-toggle auto-hide="true">
+        <ion-item routerLink="/login" class="menu-item" lines="none">
+          <ion-icon slot="start" name="log-out-outline"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<!-- MAIN ROUTER OUTLET -->
+<ion-router-outlet id="main-content"></ion-router-outlet>

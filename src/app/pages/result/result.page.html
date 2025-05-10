@@ -1,0 +1,160 @@
+<ion-header class="custom-header">
+
+  <!-- Left: Menu Button -->
+  <ion-buttons slot="start">
+    <ion-menu-button class="header-icon"></ion-menu-button>
+  </ion-buttons>
+
+  <h1 class="header-title">Result</h1>
+
+  <!-- Right: Notification Icon -->
+  <ion-buttons slot="end">
+    <ion-icon name="notifications-outline" class="header-icon" routerLink="/notification" ></ion-icon>
+  </ion-buttons>
+
+</ion-header>
+
+<ion-content class="case-details-content">
+
+  <!-- Summary Section -->
+  <div class="summary-card">
+    <h2 class="diagnosis-title">{{ diseaseName }}</h2>
+
+    <div class="diagnosis-summary-box">
+      <div class="diagnosis-row"> </div>
+
+     <div class="accuracy-row">
+      <span class="label">AI Accuracy Percentage:</span>
+       <span class="percentage">{{ confidence.toFixed(2) }}%</span> 
+     </div>
+
+      <div class="not-verified">Not Verified by a Doctor</div>
+    </div>
+  </div>
+
+  <!-- Diagnosis Image -->
+  <div class="carousel-container">
+    <div class="carousel-scroll">
+      <!-- Uploaded image -->
+      <img [src]="caseImage" alt="Uploaded Skin Image" />
+      
+      <!-- Similar examples -->
+      <img [src]="imageUrl" alt="Example 1" />
+      <img [src]="imageUrl2" alt="Example 2" />
+      <img [src]="imageUrl3" alt="Example 3" />
+    </div>
+  </div>
+  
+  
+  <div class="toggle-tabs">
+    <button [class.active]="activeTab === 'about'" (click)="activeTab = 'about'">About {{ diseaseName }}</button>
+    <button [class.active]="activeTab === 'tips'" (click)="activeTab = 'tips'">At-Home Tips</button>
+  </div>
+  
+
+    <!-- At-Home Tips Tab -->
+<div *ngIf="activeTab === 'tips'">
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title class="card-title">At-Home Tips</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div *ngFor="let tip of homeTips; let i = index" class="remedy-item">
+        <div class="circle-number">{{ i + 1 }}</div>
+        <p class="remedy-text">{{ tip }}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title class="card-title">Suggested Treatments</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="otc-text">{{ diagnosisInfo.treatmentName }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title class="card-title">Treatment Instructions:</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="otc-text">{{ diagnosisInfo.instructions }}</p>
+    </ion-card-content>
+  </ion-card>
+  
+</div>
+
+
+<div *ngIf="activeTab === 'about'">
+
+  <ion-card class="section-card" *ngIf="diagnosisInfo.description">
+    <ion-card-header>
+      <ion-card-title>Descreption: </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ diagnosisInfo.description }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Causes -->
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title>General Causes</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li *ngFor="let cause of diagnosisInfo.causes">✔️ {{ cause }}</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Symptoms -->
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title>Symptoms</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li *ngFor="let symptom of symptoms">🔴 {{ symptom }}</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+</div>
+
+
+<div>
+    <!-- Optional doctor verification button --> 
+    <ion-button expand="block" class="verify-btn" (click)="confirmVerification()">
+      <ion-icon name="medkit-outline" slot="start"></ion-icon>
+      Verify Diagnosis by Doctor
+    </ion-button>
+
+     <!-- Confirm Alert -->
+  <ion-alert
+  [isOpen]="showConfirmAlert"
+  header="Confirm Verification"
+  message="Are you sure you want to send this diagnosis for doctor verification?"
+  [buttons]="confirmButtons"
+  (didDismiss)="showConfirmAlert = false"
+  cssClass="custom-alert">
+  </ion-alert>
+
+  <!-- Success Alert -->
+  <ion-alert
+  [isOpen]="showSuccessAlert"
+  header="Success"
+  message="Diagnosis has been sent for verification."
+  [buttons]="['OK']"
+  (didDismiss)="showSuccessAlert = false"
+  cssClass="custom-alert">
+  </ion-alert>
+  
+</div>
+
+</ion-content>

@@ -1,0 +1,49 @@
+<!-- ======= Page Header ======= -->
+<ion-header class="custom-header">
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <h1 class="header-title">Verified Cases</h1>
+</ion-header>
+
+<!-- ======= Page Content ======= -->
+<ion-content class="verify-content">
+
+  <!-- Loop through each verified case -->
+  <ion-card *ngFor="let caseItem of verifiedCases; let i = index" class="dropdown-card">
+
+    <!-- Collapsible header for case summary -->
+    <ion-item button (click)="toggleDetails(i)" class="card-header" lines="none">
+      <ion-label class="dropdown-title">
+        Baby Name: {{ caseItem.babyId }}<br>
+        Diagnosis: {{ caseItem.diseaseName || 'Unknown' }}<br>
+        Confidence: {{ caseItem.confidence | number:'1.0-0' }}%<br>
+        Date: {{ caseItem.timestamp?.toDate() | date:'mediumDate' }}
+      </ion-label>
+      <ion-icon
+        name="{{ caseItem.isExpanded ? 'chevron-up-outline' : 'chevron-down-outline' }}"
+        slot="end"
+        class="toggle-icon">
+      </ion-icon>
+    </ion-item>
+
+    <!-- Expanded content with verification steps -->
+    <ion-card-content *ngIf="caseItem.isExpanded">
+      <div class="verification-step" *ngFor="let step of caseItem.steps">
+        <ion-icon [name]="step.icon" [color]="step.color" class="step-icon"></ion-icon>
+        <div class="step-info">
+          <div class="status-label">{{ step.label }}</div>
+          <div class="status-date">({{ step.date }})</div>
+        </div>
+      </div>
+
+      <!-- Button to open full report -->
+      <ion-button expand="block" class="open-report-btn" (click)="openReport(caseItem)">
+        Open Report
+      </ion-button>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

@@ -1,0 +1,348 @@
+/* ======= Custom Header Styling ======= */
+.custom-header {
+  background: #FAE3D9 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+/* ======= Back Button Styling ======= */
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white !important;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-button ion-icon {
+  color: #145C46 !important;
+  font-size: 20px;
+}
+
+/* ======= Header Title Styling ======= */
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #145C46 !important;
+  text-align: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ======= Page Padding for Fixed Header ======= */
+.case-details-content {
+  --padding-top: 130px;
+  --padding-bottom: 90px;
+  padding: 20px;
+}
+
+/* ======= Case Header Section ======= */
+.case-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.patient-name {
+  color: #00796b;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+
+.case-date {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* ======= Carousel for Case Images ======= */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.case-image-card {
+  flex: 0 0 90%;
+  border-radius: 20px;
+  overflow: hidden;
+  scroll-snap-align: center;
+}
+
+.case-image-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* ======= Section Cards (Diagnosis, Q&A) ======= */
+.section-card {
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title,
+ion-card-title {
+  font-weight: bold;
+  color: #145C46;
+}
+
+/* ======= Q&A Section ======= */
+.qa-row {
+  margin-bottom: 10px;
+}
+
+.question {
+  font-size: 17px;
+  font-weight: 600;
+  color: #145C46;
+  margin-bottom: 2px;
+}
+
+.answer {
+  color: #444;
+  font-size: 15px;
+  margin-left: 8px;
+}
+
+/* ======= Remedy List ======= */
+ion-card-content ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ion-card-content li {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #555;
+}
+
+.number {
+  font-weight: bold;
+  color: #0F5252;
+  margin-right: 5px;
+}
+
+/* ======= OTC Text ======= */
+.otc-text {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* ======= Action Buttons ======= */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 0 30px;
+}
+
+.edit-btn,
+.verify-btn {
+  --background: linear-gradient(180deg, #61C0BF, #0F5252) !important;
+  --color: white;
+  font-size: 18px;
+  border-radius: 20px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  overflow: hidden;
+}
+
+.approve-btn {
+  --background: white;
+  color: #00796b;
+  font-weight: bold;
+  border: 2px solid #00796b;
+  border-radius: 10px;
+}
+
+/* ======= Diagnosis Summary Card ======= */
+.summary-card {
+  text-align: center;
+  padding: 0 24px;
+}
+
+.diagnosis-summary-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.diagnosis-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #145C46;
+  margin-bottom: 10px;
+}
+
+.diagnosis-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #0F5252;
+  margin-bottom: 8px;
+}
+
+.diagnosis-row ion-icon {
+  font-size: 20px;
+  color: #0F5252;
+}
+
+.accuracy-row {
+  font-size: 14px;
+  color: #145C46;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.accuracy-row .label {
+  font-weight: 500;
+  color: #444;
+}
+
+.accuracy-row .percentage {
+  font-weight: bold;
+  color: #00796b;
+}
+
+.verified-label {
+  font-size: 14px;
+  color: red;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* ======= Alert Styling ======= */
+::ng-deep .custom-alert .alert-wrapper {
+  --background: #ffffff;
+  --border-radius: 20px;
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+::ng-deep .custom-alert .alert-title,
+::ng-deep .custom-alert .alert-message {
+  color: #145C46 !important;
+  text-align: center;
+}
+
+::ng-deep .custom-alert button.alert-button {
+  color: #145C46 !important;
+  font-weight: 600;
+}
+
+/* ======= Carousel Scroll Container ======= */
+.carousel-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  padding: 15px 0;
+  align-items: center;
+}
+
+.carousel-scroll {
+  display: flex;
+  gap: 12px;
+  scroll-behavior: smooth;
+  padding-left: 20px;
+}
+
+.carousel-scroll img {
+  flex: 0 0 100%;
+  max-width: 350px;
+  height: 300px;
+  border-radius: 30px;
+  object-fit: cover;
+  scroll-snap-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ======= Toggle Tabs (Navigation) ======= */
+.toggle-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.toggle-tabs button {
+  background: none;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #145C46;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.toggle-tabs button.active {
+  border-bottom: 2px solid #145C46;
+  color: #145C46;
+}
+
+/* ======= Remedies with Numbered Circles ======= */
+.remedy-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.circle-number {
+  width: 24px;
+  height: 24px;
+  background-color: #2D5A5A;
+  border-radius: 50%;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+.remedy-text {
+  flex: 1;
+  font-size: 15px;
+  color: #444;
+}

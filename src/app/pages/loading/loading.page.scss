@@ -1,0 +1,133 @@
+/* ========== Header ========== */
+.custom-header {
+  background: #FAE3D9 !important;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  height: 110px;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #145C46 !important;
+  text-align: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ========== Centered Container ========== */
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ========== Preloader Animation ========== */
+.preloader {
+  animation: rotate 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes rotate {
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
+
+.preloader span {
+  height: 64px;
+  width: 64px;
+  display: block;
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 100%;
+}
+
+/* ========== Preloader Shape 1 ========== */
+.preloader span:nth-child(1) {
+  transform: translate(-28px, -28px);
+  animation: shape_1 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes shape_1 {
+  60% {
+    transform: scale(0.4);
+  }
+}
+
+/* ========== Preloader Shape 2 ========== */
+.preloader span:nth-child(2) {
+  transform: translate(28px, -28px);
+  animation: shape_2 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes shape_2 {
+  40% {
+    transform: scale(0.4);
+  }
+}
+
+/* ========== Preloader Shape 3 ========== */
+.preloader span:nth-child(3) {
+  position: relative;
+  background: #ffffff;
+  border-color: #ffffff;
+  border-radius: 0px;
+  transform: scale(0.98) rotate(-45deg);
+  animation: shape_3 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes shape_3 {
+  50% {
+    border-radius: 100%;
+    transform: scale(0.5) rotate(-45deg);
+  }
+  100% {
+    transform: scale(0.98) rotate(-45deg);
+  }
+}
+
+/* ========== Shadow Under Preloader ========== */
+.container .shadow {
+  position: relative;
+  display: block;
+  height: 16px;
+  width: 64px;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  top: 30px;
+  animation: shadow 2.3s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+}
+
+@keyframes shadow {
+  50% {
+    border-color: #ffffff;
+    transform: scale(0.5);
+  }
+}
+
+/* ========== Loading Text ========== */
+.loading-text {
+  color: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+  padding-top: 500px;
+}

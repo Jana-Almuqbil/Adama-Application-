@@ -1,0 +1,25 @@
+<ion-header class="custom-header">
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <h1 class="header-title">Update Profile</h1>
+  <ion-buttons slot="end">
+    <ion-icon name="notifications-outline" class="header-icon" routerLink="/notification" ></ion-icon>
+  </ion-buttons>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input [(ngModel)]="parent.name" placeholder="Enter your name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Email</ion-label>
+    <ion-input [(ngModel)]="parent.email" placeholder="Enter your email"></ion-input>
+  </ion-item>
+
+  <ion-button class="action-btn" expand="block" (click)="saveChanges()">Save Changes</ion-button>
+</ion-content>

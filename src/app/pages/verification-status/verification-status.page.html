@@ -1,0 +1,56 @@
+<ion-header class="custom-header">
+  <!-- Back Button -->
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <!-- Title -->
+  <h1 class="header-title">Verification Status</h1>
+
+  <!-- Bell icon on right side -->
+  <ion-buttons slot="end">
+    <ion-button class="bell-button">
+      <ion-icon name="notifications-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-header>
+
+
+<ion-content class="verify-content">
+
+  <ion-card *ngFor="let data of verificationDataList; let i = index" class="dropdown-card">
+    <ion-item button (click)="toggleDetails(i)" class="card-header" lines="none">
+      <ion-label class="dropdown-title">
+        {{ data.title }}
+      </ion-label>
+      <ion-icon
+        slot="end"
+        [name]="data.isExpanded ? 'chevron-up-outline' : 'chevron-down-outline'">
+      </ion-icon>
+    </ion-item>
+  
+    <ion-card-content *ngIf="data.isExpanded">
+      <div class="verification-step" *ngFor="let step of data.steps">
+        <ion-icon [name]="step.icon" [color]="step.color" class="step-icon"></ion-icon>
+        <div class="step-info">
+          <div class="status-label">{{ step.label }}</div>
+          <div class="status-date">({{ step.date }})</div>
+        </div>
+      </div>
+  
+  
+      <ion-button
+        expand="block"
+        class="open-report-btn"
+        (click)="openReport(data.data)" 
+        [disabled]="!data.ready">
+        Open Report
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  
+  
+  
+</ion-content>

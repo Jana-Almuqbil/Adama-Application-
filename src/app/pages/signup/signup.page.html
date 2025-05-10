@@ -1,0 +1,81 @@
+<ion-content class="signup-container">
+  <h2 class="title">Sign up</h2>
+
+  <!-- Profile Image -->
+  <div class="profile-container">
+   
+    <img *ngIf="selectedImage; else defaultImage" [src]="selectedImage" alt="Profile Picture" class="profile-img" />
+    <ng-template #defaultImage>
+      <img src="assets/images/profile-avater.png" alt="Default Profile Picture" class="profile-img" />
+    </ng-template>
+    
+    <input type="file" accept="image/*" hidden (change)="onImageSelected($event)" #fileInput />
+    <ion-icon name="camera-outline" class="camera-icon" (click)="fileInput.click()"></ion-icon>
+  </div>
+
+  <!-- Name Input -->
+  <ion-item class="input-field">
+    <ion-icon name="person-outline" slot="start"></ion-icon>
+    <ion-input type="text" placeholder="Enter your name" [(ngModel)]="name"></ion-input>
+  </ion-item>
+
+  <!-- Email Input -->
+  <ion-item class="input-field">
+    <ion-icon name="mail-outline" slot="start"></ion-icon>
+    <ion-input type="email" placeholder="Enter your email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+
+  <!-- Password Input -->
+  <ion-item class="input-field">
+    <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+    <ion-input [type]="isPasswordVisible ? 'text' : 'password'" placeholder="Enter your password" [(ngModel)]="password"></ion-input>
+    <ion-icon [name]="isPasswordVisible ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="togglePassword()"></ion-icon>
+  </ion-item>
+
+  <!-- Confirm Password Input -->
+  <ion-item class="input-field">
+    <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+    <ion-input [type]="isConfirmPasswordVisible ? 'text' : 'password'" placeholder="Confirm your password" [(ngModel)]="confirmPassword"></ion-input>
+    <ion-icon [name]="isConfirmPasswordVisible ? 'eye-off-outline' : 'eye-outline'" slot="end" (click)="toggleConfirmPassword()"></ion-icon>
+  </ion-item>
+
+  <!-- Phone Number Input -->
+  <ion-item class="input-field">
+    <ion-icon name="call-outline" slot="start"></ion-icon>
+    <ion-input type="tel" placeholder="Enter your phone number" [(ngModel)]="phoneNumber"></ion-input>
+  </ion-item>
+
+<!-- Gender Selector -->
+<ion-item class="input-field" lines="none">
+  <ion-icon name="male-female-outline" slot="start"></ion-icon>
+  <ion-radio-group [(ngModel)]="gender" class="gender-radio-group">
+    
+    <ion-item lines="none" class="radio-inline">
+      <ion-radio slot="start" value="Male" class="custom-radio"></ion-radio>
+      <ion-label>Male</ion-label>
+    </ion-item>
+    
+    <ion-item lines="none" class="radio-inline">
+      <ion-radio slot="start" value="Female" class="custom-radio"></ion-radio>
+      <ion-label>Female</ion-label>
+    </ion-item>
+
+  </ion-radio-group>
+</ion-item>
+
+
+  <!-- Terms & Conditions Checkbox -->
+  <div class="checkbox-container">
+    <ion-checkbox [(ngModel)]="agreeToTerms"></ion-checkbox>
+    <label>I agree to ADAMA <a href="/terms">Terms and Conditions</a></label>
+  </div>
+
+  <!-- Sign Up Button -->
+  <ion-button expand="full" class="signup-btn" (click)="register()">Sign Up</ion-button>
+
+  <p class="login-text">
+    Already have an account? <a (click)="goToLogin()">Log in</a>
+  </p>
+
+  <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+</ion-content>

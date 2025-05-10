@@ -1,0 +1,585 @@
+/* ========== Header ========== */
+.custom-header {
+  background: #FAE3D9 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white !important;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-button ion-icon {
+  color: #145C46 !important;
+  font-size: 20px;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #145C46 !important;
+  text-align: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+/* === Page Content === */
+.case-details-content {
+  --padding-top: 130px;
+  --padding-bottom: 90px;
+  padding: 20px;
+}
+
+/* === Case Header === */
+.case-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.patient-name {
+  color: #00796b;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+
+.case-date {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+
+.carousel {
+display: flex;
+overflow-x: auto;
+gap: 10px;
+padding: 10px;
+scroll-behavior: smooth;
+scroll-snap-type: x mandatory;
+}
+
+.case-image-card {
+flex: 0 0 90%;
+border-radius: 20px;
+overflow: hidden;
+scroll-snap-align: center;
+}
+
+.case-image-card img {
+width: 100%;
+height: 240px;
+object-fit: cover;
+border-radius: 20px;
+}
+
+
+/* === Section Cards === */
+.section-card {
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-weight: bold;
+  color: #145C46;
+}
+
+/* === Q&A Rows === */
+.qa-row {
+  margin-bottom: 10px;
+}
+
+.question {
+  font-size: 17px;
+  font-weight: 600;
+  color: #145C46;
+  margin-bottom: 2px;
+}
+
+.answer {
+  color: #444;
+  font-size: 15px;
+  margin-left: 8px;
+}
+
+/* === List (Remedies) === */
+ion-card-content ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ion-card-content li {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #555;
+}
+
+.number {
+  font-weight: bold;
+  color: #0F5252;
+  margin-right: 5px;
+}
+
+/* === OTC Text === */
+.otc-text {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* === Buttons === */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px 0 30px;
+}
+
+.edit-btn {
+  --background: linear-gradient(to right, #5eb3a7, #145c46);
+  --color: #ffffff;
+  border-radius: 14px;
+  font-weight: 600;
+  height: 48px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.approve-btn {
+  --background: white;
+  color: #00796b;
+  font-weight: bold;
+  border: 2px solid #00796b;
+  border-radius: 10px;
+}
+
+.summary-card {
+  text-align: center;
+  padding: 0 24px;
+}
+
+.patient-name {
+  color: #00796b;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.case-date {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.diagnosis-summary-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.diagnosis-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #0F5252;
+  margin-bottom: 8px;
+}
+
+.diagnosis-row ion-icon {
+  font-size: 20px;
+  color: #0F5252;
+}
+
+.accuracy-row {
+  font-size: 14px;
+  color: #145C46;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.accuracy-row .label {
+  font-weight: 500;
+  color: #444;
+}
+
+.accuracy-row .percentage {
+  font-weight: bold;
+  color: #00796b;
+}
+
+::ng-deep .custom-alert .alert-wrapper {
+  --background: #ffffff;
+  --border-radius: 20px;
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+::ng-deep .custom-alert .alert-title,
+::ng-deep .custom-alert .alert-message {
+  color: #145C46 !important;
+  text-align: center;
+}
+
+::ng-deep .custom-alert button.alert-button {
+  color: #145C46 !important;
+  font-weight: 600;
+}
+
+
+///
+.custom-header {
+  background: #fae3d9 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-button ion-icon {
+  color: #145c46 !important;
+  font-size: 20px;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #145c46;
+  text-align: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ======= Header Icons (Menu & Notification) ======= */
+.header-icon {
+  font-size: 30px;
+  color: #000;
+}
+
+
+
+/* ======= Fix Menu Button Visibility ======= */
+ion-menu-button {
+  z-index: 10;
+}
+
+
+.case-details-content {
+  --padding-top: 130px;
+  --padding-bottom: 90px;
+  padding: 20px;
+}
+
+.summary-card {
+  text-align: center;
+  padding: 0 24px;
+}
+
+.diagnosis-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #145C46;
+  margin-bottom: 10px;
+}
+
+.diagnosis-summary-box {
+  background: white;
+  border-radius: 15px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.diagnosis-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #0F5252;
+  margin-bottom: 8px;
+}
+
+.accuracy-row {
+  font-size: 15px;
+  color: #145C46;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.verified-label {
+  font-size: 14px;
+  color: green;
+  font-weight: 500;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.case-image-card {
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 90%;
+}
+
+.case-image-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.section-card {
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+ion-card-title {
+  font-weight: bold;
+  color: #145C46;
+}
+
+ion-card-content ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 15px;
+  color: #555;
+}
+
+ion-card-content li {
+  margin-bottom: 10px;
+}
+.carousel-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  padding: 15px 0; 
+  align-items: center;
+}
+
+.carousel-scroll {
+  display:flex;
+  gap: 12px;
+  scroll-behavior: smooth;
+  padding-left: 20px;
+  // padding-right: 10px;
+}
+
+.carousel-scroll img {
+  flex: 0 0 100%; 
+  max-width: 350px;
+  height: 300px;
+  border-radius: 30px;
+  object-fit: cover;
+  scroll-snap-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  gap: 20px;
+
+  button {
+    background: transparent;
+    border: none;
+    font-weight: 500;
+    font-size: 16px;
+    color: #555;
+    position: relative;
+    padding-bottom: 5px;
+  }
+
+  .active {
+    color: #00796b;
+    font-weight: 600;
+    border-bottom: 2px solid #00796b;
+  }
+}
+.remedy-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+
+  .circle-number {
+    width: 24px;
+    height: 24px;
+    background-color: #3cbcc2;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 24px;
+  }
+
+  .remedy-text {
+    color: #333;
+    font-size: 15px;
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+.verify-btn {
+  --background: linear-gradient(to right, #5eb3a7, #145c46);
+  --color: #ffffff;
+  border-radius: 14px;
+  font-weight: 600px;
+  height: 55px;
+  width: 400px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding-left: 10px;
+  font-size: 18px;
+}
+.toggle-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  button {
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #145C46;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  button.active {
+    border-bottom: 2px solid #145C46;
+    color: #145C46;
+  }
+}
+.remedy-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.circle-number {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background-color: #2D5A5A;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+.remedy-text {
+  flex: 1;
+  font-size: 15px;
+  color: #444;
+}
+::ng-deep .custom-alert .alert-wrapper {
+  --background: #fff;
+  --border-radius: 18px;
+  --box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+::ng-deep .custom-alert .alert-title,
+::ng-deep .custom-alert .alert-message {
+  color: #145C46;
+}
+
+::ng-deep .custom-alert button.alert-button {
+  font-weight: bold;
+  color: #00796b;
+}
+::ng-deep .custom-alert .alert-wrapper {
+  --background: #ffffff;
+  --border-radius: 20px;
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+::ng-deep .custom-alert .alert-title,
+::ng-deep .custom-alert .alert-message {
+  color: #145C46 !important;
+ 
+}
+
+::ng-deep .custom-alert button.alert-button {
+  color: #145C46 !important;
+  font-weight: 600;
+}

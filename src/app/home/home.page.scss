@@ -1,0 +1,213 @@
+/* ======= Custom Header Styling ======= */
+.custom-header {
+  --background: #FAE3D9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+  padding: 15px;
+  position: fixed;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+/* ======= Profile Picture Centering ======= */
+.header-profile {
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  transform: translate(-50%, 30%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+  z-index: 100;
+}
+
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #61C0BF;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #00796b;
+  margin-top: 5px;
+}
+
+.header-icon {
+  font-size: 30px;
+  color: #000;
+}
+
+ion-menu-button {
+  z-index: 10;
+}
+
+/* ======= Diagnose Button ======= */
+.diagnose-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.diagnose-button {
+  --background: linear-gradient(180deg, #0F5252, #61C0BF) !important;
+  --color: white;
+  font-size: 18px;
+  width: 90%;
+  height: 70px;
+  border-radius: 20px !important;
+  overflow: hidden;  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/* ======= Article Cards ======= */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+.article-card {
+  min-width: 90%;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.article-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 5px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.overlay ion-card-title {
+  margin-top: 10px;
+}
+
+/* ======= Previous Scan Section ======= */
+.scan-title {
+  font-weight: bold;
+  color: rgb(12, 87, 67);
+  padding: 3px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.content-title {
+  font-weight: 200;
+  color: rgb(96, 182, 159);
+}
+
+.card-info {
+  color: rgb(0, 0, 0);
+}
+
+.scan-cards {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px;
+  overflow-y: hidden;
+  padding: 3px;
+}
+
+.scan-cards img {
+  border-radius: 20px;
+}
+
+.scan-cards ion-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 350px;
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ======= Floating Camera Button ======= */
+ion-fab {
+  bottom: 20px !important;
+}
+
+ion-fab-button {
+  transition: background-color 0.3s ease-in-out !important;
+  --background: #61C0BF;
+  --color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+ion-fab-button:active,
+ion-fab-button:focus {
+  --background: #61C0BF !important;
+}
+
+ion-fab-list ion-fab-button {
+  --background: #FFB6B9 !important;
+  --color: white;
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 50%;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+ion-fab-list ion-fab-button ion-icon {
+  font-size: 30px !important;
+  --ionicon-stroke-width: 40px;
+}
+
+/* ======= Footer Navigation ======= */
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --background: #FFB6B9;
+  width: 90%;
+  height: 80px;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 35px;
+  box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+.footer-btn {
+  background: transparent;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+/* ======= Adjust Content Padding ======= */
+ion-content {
+  --padding-top: 120px;
+  --padding-bottom: 60px;
+}

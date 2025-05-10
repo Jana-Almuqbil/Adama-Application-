@@ -1,0 +1,54 @@
+<ion-header class="custom-header">
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <ion-buttons slot="end">
+    <ion-button class="share-button" (click)="shareArticle()">
+      <ion-icon name="share-social-outline" title="Share this article"></ion-icon>
+    </ion-button>    
+  </ion-buttons>
+
+  <h1 class="header-title">Common Baby Rashes</h1>
+
+</ion-header>
+
+<ion-content class="gradient-bg">
+  <div class="article-image">
+    <img
+      src="https://www.mayoclinic.org/-/media/kcms/gbs/patient-consumer/images/2024/03/28/14/18/4baby-heat-rash-6col-001.jpg"
+      alt="Temperature rising: Heat rash"
+    />
+    <div class="overlay-box">
+      <h2>Understanding Common Baby Rashes</h2>
+      <p>Learn about different types of rashes and how to manage them effectively</p>
+    </div>
+  </div>
+
+  <div class="article-container">
+    <h3>Description</h3>
+    <p>{{ description }}</p>
+
+    <h3>Types of Common Rashes:</h3>
+    <div *ngFor="let rash of rashes">
+      <p>
+        <strong>{{ rash.title }}</strong><br />
+        {{ rash.details }}<br />
+        <strong>Management:</strong> {{ rash.management }}
+      </p>
+    </div>
+
+    <p class="source-link">
+      Source:
+      <a
+        href="https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/baby-rashes/art-20546833"
+        target="_blank"
+        rel="noopener"
+      >
+        Mayo Clinic
+      </a>
+    </p>
+  </div>
+</ion-content>

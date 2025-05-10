@@ -1,0 +1,287 @@
+/* ====== Signup Page Container ====== */
+.signup-container {
+  --background: linear-gradient(to bottom, #FFB6B9, #FAE3D9, #F5E2D8, #BFD6CF, #61C0BF);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ====== Title ====== */
+.title {
+  font-size: 40px;
+  font-weight: bold;
+  color: #0F5252;
+  margin: 100px 0px 30px 40px;
+  text-align: left;
+}
+
+/* ====== Profile Image Section ====== */
+.profile-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid white;
+  object-fit: cover;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 0;
+  right: 35%;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 30px;
+  color: #0F5252;
+}
+
+/* ====== Input Fields ====== */
+.input-field {
+  margin: 10px 20px;
+  --background: #f2f2f2;
+  font-size: 20px;
+  color: black;
+  --border-color: #FFC1DB;
+  --border-width: 2px;
+  --border-radius: 20px;
+}
+
+ion-icon {
+  color: #666; 
+}
+
+/* ====== Gender Selection (Radio Buttons) ====== */
+.gender-radio-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  color: #666;
+}
+
+.radio-inline {
+  --inner-padding-end: 0;
+  --padding-start: 0;
+  display: flex;
+  align-items: center;
+  --background: transparent;
+  --color: #666;
+}
+
+.custom-radio {
+  --color: #666;
+  --color-checked: #FFC1DB;
+}  
+
+/* ====== Checkbox Section ====== */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  color: #666;
+  margin-top: 20px;
+  gap: 10px;
+  padding: 20px 20px;
+}
+
+.allergy-options ion-checkbox {
+  transform: translateY(2px);
+  --background: #f2f2f2;
+  --border-color: #FFC1DB;
+  --border-width: 2px;
+  --border-radius: 20px;
+}
+
+.checkbox-container a {
+  color: #199A8E;
+  font-weight: bold;
+}
+
+/* ====== Allergy Box ====== */
+.allergy-box {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgb(236, 234, 234);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.allergy-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+}
+
+.allergy-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.allergy-item {
+  --background: transparent;
+  border-radius: 8px;
+  padding: 6px 0;
+}
+
+.allergy-item ion-label {
+  font-size: 14px;
+  color: #000000;
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  font-size: 17px;
+  color: #ffffff;
+}
+
+.checkbox-container ion-checkbox {
+  --background: #f2f2f2;
+  --border-color: #FFC1DB;
+  --border-width: 2px;
+  --border-radius: 20px;
+}
+
+/* ====== Default Profile Toggle Box ====== */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+.toggle-container ion-label {
+  color: #666;
+}
+
+ion-toggle {
+  --handle-background: #d1d1d1;
+  --background-checked: #96d1c9;
+}
+
+/* ====== Submit Button ====== */
+.signup-btn {
+  margin: 40px 20px;
+  --background: linear-gradient(to bottom, #0F5252, #96d1c9);
+  border-radius: 25px;
+  font-size: 20px;
+  color: white;
+}
+
+/* ====== Error Message ====== */
+.error-message {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* ====== Date Selector Button ====== */
+ion-datetime-button {
+  width: 100%;
+  --background: #f2f2f2;
+  --border-radius: 20px;
+  --padding-start: 10px;
+  --color: #666;
+}
+
+/* ====== Default Profile Box Styling ====== */
+.default-profile-box {
+  background: #f9f9f9;
+  border-radius: 30px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ====== Toggle Container Adjustments ====== */
+.toggle-container {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-container ion-label {
+  font-size: 16px;
+  color: #000000;
+  font-weight: 500;
+}
+
+.toggle-container ion-toggle {
+  --handle-background-checked: #FFC1DB;
+  --track-background-checked: #FFC1DB;
+}
+
+/* ====== Calendar Dropdown Styling ====== */
+.calendar-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ====== Date Picker Styling ====== */
+ion-datetime {
+  --background: #ffffff;
+  --background-selected: #FFC1DB;
+  --color-selected: #ffffff;
+  --color-today: #0F5252;
+  width: 100%;
+  max-width: 260px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+ion-datetime::part(days-of-month) {
+  color: black;
+}
+
+ion-datetime::part(active) {
+  background: #FFC1DB;
+  color: white;
+  border-radius: 50%;
+}
+
+ion-datetime::part(today) {
+  font-weight: bold;
+  color: #0F5252;
+}
+
+.error-message {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  color: red;
+}

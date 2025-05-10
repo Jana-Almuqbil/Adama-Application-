@@ -1,0 +1,26 @@
+.splash-container {
+  --background: linear-gradient(to bottom, #FFB6B9, #FAE3D9, #F5E2D8, #BFD6CF, #61C0BF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+  }
+  
+  .splash-logo {
+    width: 280px;
+    height: 280px;
+    margin-top: 200px;
+  }
+  
+  .app-name {
+    font-size: 48px;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #0F5252, #61C0BF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 20px;
+  }
+  
+  

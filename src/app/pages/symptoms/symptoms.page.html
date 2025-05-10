@@ -1,0 +1,73 @@
+<ion-header class="custom-header">
+  <!-- Back Button -->
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <!-- Title -->
+  <h1 class="header-title">Symptoms</h1>
+
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+   <!-- Progress Bar -->
+  <div class="stepper-wrapper">
+    <div class="step" *ngFor="let label of stepLabels; let i = index">
+      <div class="circle" [class.active]="currentStep === i + 1" [class.completed]="currentStep > i + 1">
+        <ion-icon *ngIf="currentStep > i + 1" name="checkmark-outline"></ion-icon>
+        <span *ngIf="currentStep <= i + 1">{{ i + 1 }}</span>
+      </div>
+      <p [class.active]="currentStep === i + 1">{{ label }}</p>
+      <div class="line" *ngIf="i < stepLabels.length - 1" [class.active]="currentStep > i + 1"></div>
+    </div>
+  </div>
+
+    <ion-card class="card">
+
+      <div class="question-block">
+        <p>Does the baby have a fever?</p>
+        <div class="button-group">
+          <ion-button class="yesNO-button" [class.selected]="selectedAnswers[0] === 'yes'" (click)="selectAnswer(0, 'yes')"(click)="showFeverAlertAndSelect()">YES</ion-button>
+          <ion-button class="yesNO-button" [class.selected]="selectedAnswers[0] === 'no'" (click)="selectAnswer(0, 'no')">NO</ion-button>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <p>Does anyone in your family have a history of skin conditions?</p>
+        <div class="button-group">
+          <ion-button class="yesNO-button" [class.selected]="selectedAnswers[1] === 'yes'" (click)="selectAnswer(1, 'yes')">YES</ion-button>
+          <ion-button class="yesNO-button" [class.selected]="selectedAnswers[1] === 'no'" (click)="selectAnswer(1, 'no')">NO</ion-button>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <p>Has your baby had a bacterial infection recently?</p>
+        <div class="button-group">
+          <ion-button class="yesNO-button" [class.selected]="selectedAnswers[2] === 'yes'" (click)="selectAnswer(2, 'yes')">YES</ion-button>
+          <ion-button class="yesNO-button" [class.selected]="selectedAnswers[2] === 'no'" (click)="selectAnswer(2, 'no')">NO</ion-button>
+        </div>
+      </div>
+
+      <div class="question-block">
+        <p>Are there any pets in the house?</p>
+        <div class="button-group">
+          <ion-button class="yesNO-button" [class.selected]="selectedAnswers[3] === 'yes'" (click)="selectAnswer(3, 'yes')">YES</ion-button>
+          <ion-button class="yesNO-button" [class.selected]="selectedAnswers[3] === 'no'" (click)="selectAnswer(3, 'no')">NO</ion-button>
+        </div>
+      </div>
+
+    </ion-card>
+
+</ion-content>
+
+<ion-footer class="transparent-footer">
+  <div class="button-container">
+    <ion-button expand="block" class="action-btn" fill="solid" (click)="submit()">
+      Get Results
+    </ion-button>
+  </div>
+</ion-footer>

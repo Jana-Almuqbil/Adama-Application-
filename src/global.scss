@@ -1,0 +1,204 @@
+ion-content {
+    --background: linear-gradient(to bottom, #FFB6B9 ,#f8c3c5,#F6E2D8,#6fd2d1,#62bab8);
+    padding: 15px;
+  }
+
+  
+   
+   .container .progress-bar{
+    display: flex;
+    margin: 40px 0;
+    margin-top: -10px; 
+   position: relative;
+   top: 2px; 
+   padding-top: 5px;
+ 
+   }
+   .container .progress-bar .step{
+     position: relative;
+     text-align: center;
+     width: 100%;
+   }
+   .progress-bar .step p{
+     font-size:  16px; ;
+     font-weight: 500;
+     color: #000;
+     margin-bottom: 8px;
+     transition: 0.2s;
+   }
+   .progress-bar .step p.active{
+    color:#61C0BF;
+   }
+ 
+   .progress-bar .step .bullet{
+     position: relative;
+     height: 50px;
+     width: 50px;
+     border: 2px solid #61C0BF;
+     display: inline-block;
+     border-radius: 50%;
+     transition: 0.2s;
+   }
+ 
+   .progress-bar .step .bullet.active{
+    border-color: #61C0BF;
+    background: #61C0BF;
+ 
+   }
+   .progress-bar .step:last-child .bullet::before,
+   .progress-bar .step:last-child .bullet::after{
+     display: none;
+   }
+ 
+   .progress-bar .step .bullet::before,
+   .progress-bar .step .bullet::after{
+    position: absolute;
+    content: '';
+    bottom: 20px;
+    left: 100%;
+    height: 5px;
+    width: 155%;
+    background: #9F9F9F;
+ 
+   }
+   .progress-bar .step .bullet.active:after{
+     background: #61C0BF;
+     transform: scaleX(0);
+     transform-origin:left ;
+     animation: animate 0.3s linear forwards;
+   }
+   @keyframes animate {
+     100%{
+         transform: scaleX(1);
+     }
+   }
+
+.progress-bar.deactivate-line-2 .step:nth-child(2) .bullet.active:after {
+  background: #9F9F9F !important;
+  animation: none !important;
+  transform: none !important;
+}
+.progress-bar.inactive-lines .step .bullet.active:after {
+  background: #9F9F9F !important;
+  animation: none !important;
+  transform: none !important;
+}
+   .progress-bar .step .bullet span{
+     font-weight: 500;
+     font-size: 25px;
+     line-height: 25px;
+     position: absolute;
+     bottom: 11px;
+     left: 50%;
+     transform: translateX(-50%);
+   }
+ 
+   .progress-bar .step .bullet.active span{
+     display: none;
+   }
+   .progress-bar .step .check {
+     position: absolute;
+     left: 50%;
+     top: 73%;
+     font-size: 30px;
+     transform: translate(-50%,-50%);
+     display: none;
+   }
+ 
+   .progress-bar .step .check.active{
+     display: block;
+     color: #fff;
+   }
+   .progress-bar .step .check.active ion-icon {
+    color: white;
+    font-weight: bold; 
+    font-size: 1.2em;   
+  }
+  
+ 
+   .fever-alert-clean .alert-wrapper {
+    background-color: #fff;
+    border-radius: 16px;
+    max-width: 280px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .fever-alert-clean .alert-head {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e67e22;
+    margin-bottom: 8px;
+  }
+  
+  .fever-alert-clean .alert-sub-title {
+    font-size: 20px;
+    font-weight: bolder;
+    color: #000000;
+    margin-bottom: 16px;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .fever-alert-clean .alert-message {
+    font-size: 17px;
+    font-weight: bolder;
+    color: #000000;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  
+  .fever-alert-clean .alert-button-group {
+    justify-content: center;
+  }
+  
+  .fever-alert-clean .fever-ok-button {
+    background-color: #61c0bf;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 8px 60px;
+    text-transform: capitalize;
+  }
+
+
+  
+
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import "@ionic/angular/css/palettes/dark.system.css";

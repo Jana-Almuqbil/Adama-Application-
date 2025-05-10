@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="custom-header">
+    <!-- Logo and Icons -->
+    <div class="header-bar">
+      <ion-buttons slot="start">
+        <ion-menu-button class="header-icon"></ion-menu-button>
+      </ion-buttons>
+
+      <div class="logo-container">
+        <img src="assets/Adama.png" alt="Adama Logo" class="logo-icon">
+      </div>
+
+      <!-- Right: Notification Icon -->
+      <ion-buttons slot="end">
+        <ion-icon name="notifications-outline" class="header-icon" routerLink="/doctor-notification"></ion-icon>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="dr-home-content">
+  <h2 class="section-title">Pending Cases</h2>
+
+  <ion-card *ngFor="let item of pendingCases">
+    <div class="case-row">
+      <img [src]="item.uploadedImage" alt="Diagnosis Image" class="case-image" />
+      <div class="case-info" (click)="openCase(item)">
+        <div class="case-name">{{ item.diseaseName }}</div>
+        <div>Submitted: {{ item.date }}</div>
+        <div>Confidence: {{ item.confidence | number:'1.0-2' }}%</div>
+      </div>
+    </div>
+  </ion-card>
+  
+  
+</ion-content>

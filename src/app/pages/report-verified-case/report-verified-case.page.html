@@ -1,0 +1,72 @@
+<!-- ========== Header ========== -->
+<ion-header class="custom-header">
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <h1 class="header-title">Verified Case Report</h1>
+</ion-header>
+
+<!-- ========== Main Content ========== -->
+<ion-content class="case-details-content">
+
+  <!-- ========== Diagnosis Summary ========== -->
+  <div class="summary-card">
+    <h2 class="diagnosis-title">{{ diseaseName }}</h2>
+
+    <div class="diagnosis-summary-box">
+      <div class="diagnosis-row"> </div>
+      <div class="accuracy-row">
+        <span class="label">AI Accuracy Percentage:</span>
+        <span class="percentage">{{ confidence | number: '1.0-2' }}%</span> 
+      </div>
+      <div class="verified-label"> Verified by Doctor </div>
+    </div>
+  </div>
+
+  <!-- ========== Image Carousel ========== -->
+  <div class="carousel-container">
+    <div class="carousel-scroll">
+      <!-- Uploaded image -->
+      <img [src]="uploadedImage" alt="Uploaded Skin Image" />
+      <!-- AI-suggested similar examples -->
+      <img [src]="imageUrl" alt="Example 1" />
+      <img [src]="imageUrl2" alt="Example 2" />
+      <img [src]="imageUrl3" alt="Example 3" />
+    </div>
+  </div>
+
+  <!-- ========== Symptoms Section ========== -->
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title>Symptoms</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ul> 
+        <li *ngFor="let symptom of symptoms">🔴 {{ symptom }}</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- ========== Treatment Name Section ========== -->
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title class="card-title">Suggested Treatment</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="otc-text">{{ treatmentName }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- ========== Treatment Instructions Section ========== -->
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title class="card-title">Treatment Instructions:</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="otc-text">{{ instructions }}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar class="custom-header">
+
+    <!-- Menu icon (left) -->
+    <ion-buttons slot="start">
+      <ion-menu-button class="header-icon"></ion-menu-button>
+    </ion-buttons>
+
+    <!-- Notification icon (right) -->
+    <ion-buttons slot="end">
+      <ion-icon name="notifications-outline" class="header-icon" routerLink="/notification"></ion-icon>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+  <!-- Profile picture and name (centered below toolbar) -->
+  <div class="header-profile">
+    <img src="assets/profile.png" class="profile-pic" alt="Profile">
+    <span class="profile-name">{{ babyId }}</span>
+  </div>
+</ion-header>
+
+<ion-content id="main-content">
+
+  <!-- Upload button for diagnosis -->
+  <div class="diagnose-container">
+    <input type="file" #fileInput hidden accept="image/*" (change)="onFileSelected($event)" />
+    <ion-button expand="full" class="diagnose-button" (click)="fileInput.click()">
+      <ion-icon name="scan-circle-outline"></ion-icon>
+      Diagnose Baby Skin
+    </ion-button>
+  </div>
+
+  <!-- Article cards carousel -->
+  <div class="carousel">
+    <ion-card *ngFor="let article of articles" class="article-card">
+      <img [src]="article.image" [alt]="article.title" />
+      <div class="overlay">
+        <ion-card-title>{{ article.title }}</ion-card-title>
+        <p>{{ article.description }}</p>
+        <ion-button fill="clear" routerLink="/articles">LEARN MORE</ion-button>
+      </div>
+    </ion-card>
+  </div>
+
+  <!-- Previous scans grid -->
+  <div>
+    <h2 class="scan-title">Previous skin scans</h2>
+    <div class="scan-cards">
+      <ion-card class="scan-cards ion-card" *ngFor="let scan of previousScans" (click)="openCase(scan)">
+        <img [src]="scan.image" [alt]="scan.name" />
+        <ion-card-content>
+          <ion-card-title class="content-title">{{ scan.name }}</ion-card-title>
+          <p class="card-info"><strong>Date:</strong> {{ scan.date }}</p><br>
+          <p class="card-info"><strong>Accuracy Percentage:</strong> {{ scan.accuracy }}% Confidence</p>
+          <ion-icon name="open-outline"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+
+  <!-- Floating camera button -->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" [ngClass]="{ 'fab-active': isFabOpen }">
+    <ion-fab-button (click)="toggleFab()">
+      <ion-icon [name]="isFabOpen ? 'close' : 'camera'"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="takePhoto(); closeFab()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-button (click)="fileInput.click(); closeFab()">
+        <ion-icon name="image"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>
+
+<!-- Bottom navigation bar -->
+<ion-footer>
+  <ion-toolbar class="footer-container">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon class="footer-btn" name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/profile">
+        <ion-icon class="footer-btn" name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

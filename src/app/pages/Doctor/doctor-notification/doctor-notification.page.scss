@@ -1,0 +1,122 @@
+.custom-header {
+    background: #FAE3D9 !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 110px;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  
+  .back-button {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white !important;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .back-button ion-icon {
+    color: #145C46 !important;
+    font-size: 20px;
+  }
+  
+  .header-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #145C46 !important;
+    text-align: center;
+    flex-grow: 1;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 130px;
+    gap: 20px;
+  }
+  
+  .tab-buttons button {
+    background: transparent;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    color: #777;
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent;
+  }
+  
+  .tab-buttons button.active {
+    color: #145c46;
+    border-color: #145c46;
+  }
+  
+  .notification-card {
+    align-items: center;
+    background: white;
+    margin: 16px;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+  
+  .notification-card.unread {
+    border: 2px solid #f28c8c;
+  }
+  
+  .notif-icon {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 12px;
+    color: #145c46;
+  }
+  
+  .notif-text {
+    flex: 1;
+  }
+  
+  .notif-text h2 {
+    font-size: 14px;
+    color: #145c46;
+    margin: 0 0 4px;
+    font-weight: bold;
+  }
+  
+  .notif-text p {
+    font-size: 13px;
+    margin: 0 0 6px;
+    color: #333;
+  }
+  
+  .notif-date {
+    font-size: 11px;
+    color: #999;
+  }
+  
+  .notif-close {
+    font-size: 20px;
+    color: #999;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+  

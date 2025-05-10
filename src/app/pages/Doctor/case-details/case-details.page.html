@@ -1,0 +1,111 @@
+<ion-header class="custom-header">
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+  <h1 class="header-title">Case Details</h1>
+</ion-header>
+
+
+<ion-content class="case-details-content">
+
+  <!-- Patient Info -->
+ <div class="summary-card">
+    <h2 class="diagnosis-title">{{ diseaseName }}</h2>
+
+    <div class="diagnosis-summary-box"> 
+      <div class="diagnosis-row"> </div>
+
+      <div class="accuracy-row">
+        <span class="label">AI Accuracy Percentage:</span>
+        <span class="percentage">{{ confidence | number: '1.0-2' }}%</span> 
+      </div>
+    
+      <div class="verified-label"> Not Verified by Doctor </div>
+    </div>
+  </div>
+
+
+
+  <!-- Swipeable Diagnosis Images -->
+  <div class="carousel-container">
+    <div class="carousel-scroll">
+      <!-- Uploaded image -->
+      <img [src]="uploadedImage" alt="Uploaded Skin Image" />
+      
+      <!-- Similar examples -->
+      <img [src]="imageUrl" alt="Example 1" />
+      <img [src]="imageUrl2" alt="Example 2" />
+      <img [src]="imageUrl3" alt="Example 3" />
+    </div>
+  </div>
+
+  <!-- Suggested Treatment Card -->
+
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title>Symptoms</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li *ngFor="let symptom of symptoms">🔴 {{ symptom }}</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title class="card-title">Suggested Treatment</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="otc-text">{{ treatmentName }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="section-card">
+    <ion-card-header>
+      <ion-card-title class="card-title">Treatment Instructions:</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p class="otc-text">{{ instructions }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Buttons -->
+  <div class="button-group">
+    <ion-button expand="block" class="edit-btn" routerLink="/edit-diagnosis">
+      <ion-icon name="create-outline" slot="start"></ion-icon>
+      Edit Diagnosis
+    </ion-button>
+    <ion-button expand="block" class="approve-btn" (click)="confirmApproval()">
+      <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+      Approve Diagnosis
+    </ion-button>
+
+    
+<!-- Confirm Alert -->
+<ion-alert
+  cssClass="custom-alert"
+  [isOpen]="showConfirmAlert"
+  header="Are you sure?"
+  message="You’re about to approve this diagnosis. This action cannot be undone."
+  [buttons]="confirmButtons"
+  (didDismiss)="showConfirmAlert = false">
+</ion-alert>
+
+<ion-alert
+  cssClass="custom-alert"
+  [isOpen]="showSuccessAlert"
+  header="Success"
+  message="The diagnosis has been approved."
+  [buttons]="['OK']"
+  (didDismiss)="showSuccessAlert = false">
+</ion-alert>
+
+
+  </div>
+</ion-content>

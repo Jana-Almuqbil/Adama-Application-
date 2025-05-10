@@ -1,0 +1,51 @@
+<ion-content class="login-container">
+  <div class="login-card">
+
+    <!-- Title -->
+    <h2 class="title">Welcome</h2>
+
+    <!-- Email Input -->
+    <ion-item class="input-field">
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+      <ion-input 
+        type="email" 
+        placeholder="Enter your email" 
+        [(ngModel)]="email">
+      </ion-input>
+    </ion-item>
+
+    <!-- Password Input -->
+    <ion-item class="input-field">
+      <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+      <ion-input 
+        type="password" 
+        placeholder="Enter your password" 
+        [(ngModel)]="password">
+      </ion-input>
+    </ion-item>
+
+    <!-- Forgot Password Link -->
+    <a class="forgot-password" (click)="goToForgetPassword()">Forgot Password?</a>
+
+    <!-- Login Button -->
+    <ion-button expand="full" class="login-btn" (click)="login()">Login</ion-button>
+
+    <!-- Sign Up Redirect -->
+    <p class="signup-text">
+      Don’t have an account? <a (click)="goToSignup()">Sign Up</a>
+    </p>
+
+    <!-- Error Message -->
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+    <!-- Divider -->
+    <div class="divider">OR</div>
+
+    <!-- Google Login -->
+    <ion-button expand="block" class="social-login google" (click)="googleLogin()">
+      <ion-icon name="logo-google" slot="start"></ion-icon>
+      <span>Sign in with Google</span>
+    </ion-button>
+
+  </div>
+</ion-content>

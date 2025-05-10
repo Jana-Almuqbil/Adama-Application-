@@ -1,0 +1,20 @@
+<ion-content class="baby-profile-container">
+  <div class="title-container">
+    <h2 class="title">Select Baby Profile</h2>
+  </div>
+  
+  <div class="baby-profiles">
+    <div class="baby-profile" *ngFor="let baby of babyProfiles" (click)="selectBaby(baby)">
+      <img src="assets\images\profile-avater.png" [alt]="baby.name" class="baby-img" />
+      <p>{{ baby.name }}</p>
+    </div>
+  </div>
+
+  <div class="add-baby">
+    <ion-button fill="clear" (click)="goToCreateBaby()">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-button>
+    <p>Add Baby</p>
+  </div>
+  
+</ion-content>

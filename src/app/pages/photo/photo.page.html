@@ -1,0 +1,39 @@
+<ion-header class="custom-header">
+  <!-- Back Button -->
+  <ion-buttons slot="start">
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
+   <!-- Title -->
+   <h1 class="header-title">Upload Photo</h1>
+
+  </ion-header>
+
+<ion-content [fullscreen]="true">
+ 
+    <div class="stepper-wrapper">
+      <div class="step" *ngFor="let label of stepLabels; let i = index">
+        <div class="circle" [class.active]="currentStep === i + 1" [class.completed]="currentStep > i + 1">
+          <ion-icon *ngIf="currentStep > i + 1" name="checkmark-outline"></ion-icon>
+          <span *ngIf="currentStep <= i + 1">{{ i + 1 }}</span>
+        </div>
+        <p [class.active]="currentStep === i + 1">{{ label }}</p>
+        <div class="line" *ngIf="i < stepLabels.length - 1" [class.active]="currentStep > i + 1"></div>
+      </div>
+    </div>
+
+    <div class="image-preview" *ngIf="selectedImage">
+      <img [src]="selectedImage" alt="Selected Image" />
+    </div>
+
+</ion-content>
+
+<ion-footer class="transparent-footer">
+  <div class="button-container two-buttons">
+    <ion-button class= "cancel-btn" (click)="goBack()">Cancel</ion-button>
+    <ion-button class= "action-btn" (click)="predictDiagnosis()">Choose</ion-button>
+
+  </div>
+</ion-footer>

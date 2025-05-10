@@ -1,0 +1,141 @@
+.signup-container {
+  --background: linear-gradient(to bottom, #FFB6B9, #FAE3D9, #F5E2D8, #BFD6CF, #61C0BF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #0F5252;
+    margin: 100px 0px 30px 40px;
+    text-align: left;
+  }
+  
+ 
+  .profile-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid white;
+    object-fit: cover;
+  }
+  
+  .camera-icon {
+    position: absolute;
+    bottom: 0;
+    right: 35%;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    font-size: 30px;
+    color: #0F5252;
+  }
+  
+  
+  .input-field {
+    margin: 10px 20px;
+    --background: #f2f2f2;
+    font-size: 20px;
+    color: black;
+    --border-color: #FFC1DB;
+    --border-width: 2px;
+    --border-radius: 20px;
+
+  }
+  
+  ion-icon{
+  color: #666; 
+  }
+  
+  .gender-radio-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    color:#666;
+  }
+  
+  .radio-inline {
+    --inner-padding-end: 0;
+    --padding-start: 0;
+    display: flex;
+    align-items: center;
+    --background: transparent;
+    --color:#666;
+  }
+  
+ 
+  .custom-radio {
+    --color:#666;
+    --color-checked: #FFC1DB;
+    size: 10px;
+  }  
+
+  /* Checkbox */
+  .checkbox-container {
+    display:flex;
+    align-items: center;
+    font-size: 17px;
+    color: #666;
+    margin-top: 20px;
+    gap: 10px;
+    padding: 20px 20px;
+  }
+  
+  .checkbox-container ion-checkbox {
+    transform: translateY(2px);
+    --background:#f2f2f2;
+    --border-color: #FFC1DB;
+    --border-width: 2px;
+    --border-radius: 20px;
+  }
+
+  .checkbox-container a {
+    color: #199A8E;
+    font-weight: bold;
+  }
+  
+
+  /* Sign Up Button */
+  .signup-btn {
+
+      --background: linear-gradient(180deg, #61C0BF, #0F5252) !important;
+      --color: white;
+      font-size: 18px;
+      border-radius: 20px !important;
+      overflow: hidden;  display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+  
+  /* Login Text */
+  .login-text {
+    font-size: 20px;
+    color: #666;
+    margin-top: 15px;
+  }
+  
+  .login-text a {
+    color: #199A8E;
+    font-weight: bold;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: red;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  

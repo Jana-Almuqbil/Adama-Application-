@@ -1,0 +1,101 @@
+<!-- ======= Page Header ======= -->
+<ion-header class="custom-header">
+  <ion-buttons slot="start">
+    <!-- Back Button -->
+    <ion-button class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <!-- Page Title -->
+  <h1 class="header-title">Settings</h1>
+</ion-header>
+
+<ion-content fullscreen="true">
+
+  <!-- ======= Preferences Group ======= -->
+  <div class="settings-group">
+    <p class="group-title">Preferences</p>
+    
+    <!-- Notification Settings -->
+    <ion-item lines="full" button (click)="openNotifications()">
+      <ion-icon name="notifications-outline" slot="start"></ion-icon>
+      <ion-label>Notification</ion-label>
+    </ion-item>
+    
+    <!-- Dark Mode Toggle -->
+    <ion-item lines="none">
+      <ion-icon name="sunny-outline" slot="start"></ion-icon>
+      <ion-label>Dark Mode</ion-label>
+      <ion-toggle slot="end" [(ngModel)]="darkMode"></ion-toggle>
+    </ion-item>
+  </div>
+
+  <!-- ======= App Experience Group ======= -->
+  <div class="settings-group">
+    <p class="group-title">App Experience</p>
+    
+    <!-- Rate the App -->
+    <ion-item lines="full" button (click)="rateApp()">
+      <ion-icon name="star-outline" slot="start"></ion-icon>
+      <ion-label>Rate App</ion-label>
+    </ion-item>
+    
+    <!-- Share the App -->
+    <ion-item lines="none" button (click)="shareApp()">
+      <ion-icon name="share-social-outline" slot="start"></ion-icon>
+      <ion-label>Share App</ion-label>
+    </ion-item>
+  </div>
+
+  <!-- ======= Legal & Policies Group ======= -->
+  <div class="settings-group">
+    <p class="group-title">Legal & Policies</p>
+    
+    <!-- Terms and Conditions Link -->
+    <ion-item lines="none" routerLink="/terms">
+      <ion-icon name="document-outline" slot="start"></ion-icon>
+      <ion-label>Terms and Conditions</ion-label>
+    </ion-item>
+  </div>
+
+  <!-- ======= Support & Feedback Group ======= -->
+  <div class="settings-group">
+    <p class="group-title">Support & Feedback</p>
+    
+    <!-- Contact Support -->
+    <ion-item lines="full" button (click)="contactSupport()">
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+      <ion-label>Contact</ion-label>
+    </ion-item>
+    
+    <!-- Open Feedback Form -->
+    <ion-item lines="none" button (click)="openFeedbackForm()">
+      <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
+      <ion-label>Feedback</ion-label>
+    </ion-item>
+  </div>
+
+  <!-- ======= Security & Logout Group ======= -->
+  <div class="settings-group">
+    <p class="group-title">Security & Logout</p>
+    
+    <!-- Change Password -->
+    <ion-item lines="full" button (click)="changePassword()">
+      <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+      <ion-label>Change Password</ion-label>
+    </ion-item>
+  
+    <!-- Delete Account -->
+    <ion-item lines="full" button (click)="deleteAccount()">
+      <ion-icon name="trash-outline" slot="start"></ion-icon>
+      <ion-label>Delete Account</ion-label>
+    </ion-item>
+    
+    <!-- Logout -->
+    <ion-item lines="none" button (click)="logout()">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      <ion-label>Logout</ion-label>
+    </ion-item>
+  </div>
+
+</ion-content>

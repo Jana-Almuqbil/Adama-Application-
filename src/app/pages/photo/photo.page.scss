@@ -1,0 +1,361 @@
+/* ========== Header ========== */
+.custom-header {
+  background: #FAE3D9 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 110px;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white !important;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-button ion-icon {
+  color: #145C46 !important;
+  font-size: 20px;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #145C46 !important;
+  text-align: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.icon-button {
+  font-size: 24px;
+  color: #145C46;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ========== Progress Bar ========== */
+.custom-content {
+  --padding-top: 120px;
+}
+
+.stepper-wrapper {
+  margin-top: 130px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  padding: 0 10px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.circle {
+  width: 36px;
+  height: 36px;
+  background: #ffffff;
+  border: 2px solid #61c0bf;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #61c0bf;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.circle.active {
+  background: #61c0bf;
+  color: white;
+}
+
+.circle.completed {
+  background: white;
+  color: #61c0bf;
+}
+
+.circle.completed ion-icon {
+  font-size: 18px;
+}
+
+.step p {
+  font-size: 13px;
+  margin-top: 6px;
+  color: #666;
+  font-weight: 500;
+  text-align: center;
+}
+
+.step p.active {
+  color: #145c46;
+  font-weight: bold;
+}
+
+.step .line {
+  content: '';
+  position: absolute;
+  height: 4px;
+  background: #ccc;
+  top: 16px;
+  left: 50%;
+  width: 100%;
+  z-index: 1;
+}
+
+.step .line.active {
+  background: #61c0bf;
+}
+
+/* ========== Buttons ========== */
+.button-container {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+}
+
+ion-toolbar {
+  --background: #fde2e4;
+  --color: #333;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  --border-color: transparent !important;
+}
+
+.First-custom-back-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-top: 35px;
+}
+
+.First-custom-back-button ion-icon {
+  color: black;
+  font-size: 20px;
+  position: relative;
+}
+
+ion-icon {
+  font-size: 20px;
+  color: black;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-button {
+  --padding-end: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 25px;
+  font-weight: bolder;
+  font-family: inherit;
+}
+
+/* ========== Card Titles ========== */
+.cardtitle {
+  width: 90%;
+  height: 78px;
+  background: white;
+  justify-content: center;
+  --color: #000;
+  position: relative;
+  top: -20px;
+
+  p {
+    --color: #000;
+    font-weight: bold;
+    font-size: 18px;
+    justify-content: center;
+    display: flex;
+    position: relative;
+  }
+}
+
+/* ========== Selectable Card Style ========== */
+.select-card {
+  width: 90%;
+  height: calc(100% + 5px);
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  background: white;
+  margin: 10px;
+  margin-left: 10px;
+  top: -14px;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  ion-item {
+    --background: transparent;
+    display: flex;
+    align-items: center;
+  }
+
+  ion-avatar {
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
+    margin-left: -10px;
+  }
+
+  ion-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  ion-label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .card-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+  }
+
+  .card-description {
+    font-size: 14px;
+    color: rgb(90, 88, 88);
+    white-space: normal;
+  }
+}
+
+/* ========== Button Layouts ========== */
+.button-container {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  height: 40px;
+}
+
+.cancel-btn {
+  --background: white;
+  color: #00796b;
+  font-size: 18px;
+  width: 90%;
+  height: 70px;
+  border-radius: 20px !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.action-btn {
+  --background: linear-gradient(180deg, #61C0BF, #0F5252) !important;
+  --color: white;
+  font-size: 18px;
+  width: 90%;
+  height: 70px;
+  border-radius: 20px !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.next-button:hover {
+  background: #fff;
+}
+
+/* ========== Image Preview ========== */
+.image-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 10px;
+  margin: 30px auto;
+  width: 400px;
+  max-width: 400px;
+  height: 550px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-height: 200px;
+
+  img {
+    width: 400px;
+    height: 550px;
+    border-radius: 15px;
+    object-fit: cover;
+  }
+}
+
+/* ========== Two Buttons Layout ========== */
+.button-container.two-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+}
+
+.button-container.two-buttons ion-button {
+  flex: 1;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.button-container.two-buttons ion-button[color="medium"] {
+  --background: #f6f6f6;
+  --color: #222;
+  border: 1px solid #ccc;
+}
