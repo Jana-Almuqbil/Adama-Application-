@@ -129,4 +129,8 @@ export class CreateBabyPage {
     this.babyBirthdate = event.detail.value;
     this.showDateModal = false;
   }
+goBack() {
+      this.router.navigate(['/select-baby']);
+}
+
 }

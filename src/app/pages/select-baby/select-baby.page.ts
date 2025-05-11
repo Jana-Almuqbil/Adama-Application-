@@ -9,12 +9,12 @@ import { getAuth } from 'firebase/auth';
   styleUrls: ['./select-baby.page.scss'],
   standalone: false,
 })
-export class SelectBabyPage implements OnInit {
+export class SelectBabyPage {
   babyProfiles: any[] = [];
 
   constructor(private firestore: Firestore, private router: Router) {}
 
-  async ngOnInit() {
+async ionViewWillEnter() {
     const auth = getAuth();
     const user = auth.currentUser;
     if (!user || !user.email) {

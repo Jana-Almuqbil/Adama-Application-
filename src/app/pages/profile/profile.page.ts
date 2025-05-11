@@ -152,14 +152,33 @@ export class ProfilePage {
   }
 
   // Delete the currently selected baby profile
-  async deleteBabyProfile() {
-    const auth = getAuth();
-    const user = auth.currentUser;
-    if (!user?.email) return;
+  // Confirm and delete the currently selected baby profile
+async deleteBabyProfile() {
+  const alert = document.createElement('ion-alert');
+  alert.header = 'Confirm Deletion';
+  alert.message = 'Are you sure you want to delete this baby profile?';
+  alert.buttons = [
+    {
+      text: 'Cancel',
+      role: 'cancel',
+      cssClass: 'alert-cancel-button',
+      handler: () => {
+        console.log('Deletion canceled');
+      }
+    },
+    {
+      text: 'Delete',
+      role: 'destructive',
+      cssClass: 'alert-delete-button',
+      handler: async () => {
+        const auth = getAuth();
+        const user = auth.currentUser;
+        if (!user?.email) return;
 
-    const parentId = user.email.toLowerCase();
-    const babyRef = doc(this.firestore, `Parents/${parentId}/babies/${this.selectedBabyId}`);
+        const parentId = user.email.toLowerCase();
+        const babyRef = doc(this.firestore, `Parents/${parentId}/babies/${this.selectedBabyId}`);
 
+       
     try {
       await deleteDoc(babyRef);
       console.log('Deleted baby profile.');
@@ -168,7 +187,13 @@ export class ProfilePage {
     } catch (error) {
       console.error('Failed deleting baby', error);
     }
-  }
+      }
+    }
+  ];
+
+  document.body.appendChild(alert);
+  await alert.present();
+}
 
   // Open date picker
   openCalendar() {

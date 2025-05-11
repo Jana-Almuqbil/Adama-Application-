@@ -6,6 +6,7 @@ import { GoogleAuthProvider, signInWithPopup, getAuth, signInWithEmailAndPasswor
 import { AppComponent } from 'src/app/app.component';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -90,6 +91,9 @@ export class LoginPage {
   goToForgetPassword(){
     this.router.navigate(['/forget-password']);
     }
+
+  
+
       
 }
 

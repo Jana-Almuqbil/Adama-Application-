@@ -1,14 +1,56 @@
-/* ====== Signup Page Container ====== */
-.signup-container {
-  --background: linear-gradient(to bottom, #FFB6B9, #FAE3D9, #F5E2D8, #BFD6CF, #61C0BF);
+/* ========== Custom Header ========== */
+.custom-header {
+  background: #FAE3D9 !important;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  height: 100%;
-  text-align: center;
-  padding: 20px;
+  height: 110px;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
+/* Back button (left side of header) */
+.back-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white !important;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.back-button ion-icon {
+  color: #145C46 !important;
+  font-size: 20px;
+}
+
+/* Header title centered */
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #145C46 !important;
+  text-align: center;
+  flex-grow: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+ion-content {
+  --padding-top: 150px; 
+}
 /* ====== Title ====== */
 .title {
   font-size: 40px;
@@ -77,11 +119,7 @@ ion-icon {
   --background: transparent;
   --color: #666;
 }
-
-.custom-radio {
-  --color: #666;
-  --color-checked: #FFC1DB;
-}  
+ 
 
 /* ====== Checkbox Section ====== */
 .checkbox-container {
@@ -97,7 +135,7 @@ ion-icon {
 .allergy-options ion-checkbox {
   transform: translateY(2px);
   --background: #f2f2f2;
-  --border-color: #FFC1DB;
+  --border-color: #ffc1c1;
   --border-width: 2px;
   --border-radius: 20px;
 }
@@ -151,12 +189,7 @@ ion-icon {
   color: #ffffff;
 }
 
-.checkbox-container ion-checkbox {
-  --background: #f2f2f2;
-  --border-color: #FFC1DB;
-  --border-width: 2px;
-  --border-radius: 20px;
-}
+
 
 /* ====== Default Profile Toggle Box ====== */
 .toggle-container {
@@ -232,10 +265,7 @@ ion-datetime-button {
   font-weight: 500;
 }
 
-.toggle-container ion-toggle {
-  --handle-background-checked: #FFC1DB;
-  --track-background-checked: #FFC1DB;
-}
+
 
 /* ====== Calendar Dropdown Styling ====== */
 .calendar-dropdown {
@@ -254,27 +284,13 @@ ion-datetime-button {
   margin-right: auto;
 }
 
-/* ====== Date Picker Styling ====== */
-ion-datetime {
-  --background: #ffffff;
-  --background-selected: #FFC1DB;
-  --color-selected: #ffffff;
-  --color-today: #0F5252;
-  width: 100%;
-  max-width: 260px;
-  border-radius: 15px;
-  margin-bottom: 10px;
-}
+
 
 ion-datetime::part(days-of-month) {
   color: black;
 }
 
-ion-datetime::part(active) {
-  background: #FFC1DB;
-  color: white;
-  border-radius: 50%;
-}
+
 
 ion-datetime::part(today) {
   font-weight: bold;
@@ -286,4 +302,56 @@ ion-datetime::part(today) {
   font-size: 14px;
   margin-top: 10px;
   color: red;
+}
+
+ion-radio.custom-radio {
+  --size: 20px;
+  --border-radius: 50%;
+  --color-checked:#f28c8c; 
+  --border-width: 2px;
+  margin-right: 8px;
+}
+
+ion-radio::part(container) {
+  border: 2px solid #ccc;
+}
+
+ion-checkbox {
+  --border-color-checked: #f28c8c; 
+  --checkbox-background-checked: #f28c8c;
+  --size: 22px; 
+}
+
+/* Calendar Styling */
+.calendar-dropdown {
+  background: linear-gradient(to bottom, #ffdada, #f5e5e5);
+  padding: 16px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+
+
+.calendar-dropdown ion-datetime {
+  --background: #ffffff;
+  --ion-text-color: #0F5252;
+  --ion-color-primary: #fcb2b2;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.calendar-dropdown ion-button {
+  --background: #fcb2b2; 
+  --color: rgb(255, 255, 255);
+  margin-top: 10px;
+  font-weight: bold;
+  border-radius: 12px;
+  height: 45px;
+  font-size: 16px;
+  box-shadow: 0 4px 10px #f3caca(244, 143, 177, 0.4); 
+}
+
+::ng-deep ion-datetime {
+  --ion-color-primary: #fbaaaa !important; 
+  --ion-color-primary-contrast: white !important; 
+  --ion-color-primary-rgb: 251, 170, 170 !important; 
 }
