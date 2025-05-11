@@ -27,17 +27,13 @@ Before you start, make sure the following are installed:
    Example:
    cd C:\Users\YourName\Desktop\Adama\model-api
 
-3. Create and activate a virtual environment:
-   python -m venv venv
-   venv\Scripts\activate       # For Windows
-
-4. Install the required Python libraries:
+3. Install the required Python libraries:
    pip install flask flask-cors tensorflow Pillow
 
-5. Run the backend API:
+4. Run the backend API:
    python model_api.py
 
-6. The backend will start on:
+5. The backend will start on:
    http://localhost:5000
 
 ---
