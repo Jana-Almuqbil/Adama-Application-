@@ -130,6 +130,7 @@ export class HomePage {
 
   // Load previous scans when entering the page
   async ionViewWillEnter() {
+    
     const babyId = localStorage.getItem('selectedBabyId');
     if (!babyId) return;
   
@@ -139,17 +140,32 @@ export class HomePage {
     this.previousScans = snapshot.docs.map(doc => {
       const data = doc.data();
       return {
+        caseId: doc.id, 
+        babyId: babyId,
         name: data['diseaseName'] || 'Unknown',
         date: new Date(data['timestamp']?.seconds * 1000).toLocaleDateString(),
         accuracy: parseFloat(data['confidence']).toFixed(0),
-        image: data['uploadedImage'] || 'assets/placeholder.jpg'
+        image: data['uploadedImage'] || 'assets/placeholder.jpg',
+         symptoms: data['symptoms'] || [] 
+         
       };
     });
   }
-
   openCase(scan: any) {
-    localStorage.setItem('selectedVerifiedCase', JSON.stringify(scan));
-    this.navCtrl.navigateForward('/result'); 
-  }
+  console.log('Opening this scan:', scan);
+
+  // Save important information correctly
+  localStorage.setItem('selectedCaseId', scan.caseId);
+  localStorage.setItem('selectedBabyId', scan.babyId);
+
+  localStorage.setItem('selectedVerifiedCase', JSON.stringify(scan));
+
+  this.navCtrl.navigateForward('/result');
+}
+
+getBabyId(): string {
+  return localStorage.getItem('selectedBabyId') || 'unknown-baby-id';
+}
+
 
 }

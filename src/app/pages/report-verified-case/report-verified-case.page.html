@@ -16,12 +16,35 @@
     <h2 class="diagnosis-title">{{ diseaseName }}</h2>
 
     <div class="diagnosis-summary-box">
-      <div class="diagnosis-row"> </div>
+      <div class="diagnosis-row"></div>
+
       <div class="accuracy-row">
         <span class="label">AI Accuracy Percentage:</span>
         <span class="percentage">{{ confidence | number: '1.0-2' }}%</span> 
       </div>
-      <div class="verified-label"> Verified by Doctor </div>
+
+      <!-- Verification Status -->
+      <div [ngSwitch]="status" class="verified-label">
+  
+        <!-- Case 1: Not Verified -->
+        <div *ngSwitchCase="'Not Verified By Doctor'" class="not-verified-label">
+          Not Verified by Doctor
+        </div>
+      
+        <!-- Case 2: Waiting for Doctor Verification -->
+        <div *ngSwitchCase="'Opened by Doctor Ahmed, and waiting for verification'" class="waiting-label">
+          Waiting for Doctor Verification
+        </div>
+      
+        <!-- Case 3: Verified -->
+        <div *ngSwitchCase="'Verified'" class="verified-label">
+          Verified by Doctor
+        </div>
+       
+       
+
+      </div>
+      
     </div>
   </div>
 

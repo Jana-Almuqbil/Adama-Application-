@@ -15,8 +15,8 @@
 
   <!-- Profile picture and name (centered below toolbar) -->
   <div class="header-profile">
-    <img src="assets/profile.png" class="profile-pic" alt="Profile">
-    <span class="profile-name">{{ babyId }}</span>
+    <img src="assets\images\profile-avater.png" class="profile-pic" alt="Profile">
+    <span class="profile-name">{{ getBabyId() }}</span>
   </div>
 </ion-header>
 
@@ -36,7 +36,7 @@
     <ion-card *ngFor="let article of articles" class="article-card">
       <img [src]="article.image" [alt]="article.title" />
       <div class="overlay">
-        <ion-card-title>{{ article.title }}</ion-card-title>
+        <ion-card-title class="tit-card">{{ article.title }}</ion-card-title>
         <p>{{ article.description }}</p>
         <ion-button fill="clear" routerLink="/articles">LEARN MORE</ion-button>
       </div>

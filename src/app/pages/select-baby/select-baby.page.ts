@@ -35,6 +35,7 @@ export class SelectBabyPage implements OnInit {
 
   selectBaby(baby: any) {
     localStorage.setItem('selectedBabyId', baby.id);
+    console.log('Selected Baby ID:', baby.id);
     this.router.navigate(['/home']); 
   }
 

@@ -18,80 +18,98 @@
     <!-- Parent Info Section -->
     <div class="user-info">
       <div class="image-container">
-        <img src="assets/mom.jpg" class="user-img" />
+        <img [src]="parentProfile.image" class="user-img" />
         <ion-icon name="create-outline" class="edit-icon" (click)="editParentInfo()"></ion-icon>
       </div>
-      <h2>Mom Asma</h2>
-      <p>Asma&#64;gmail.com</p>
+      <h2>{{ parentProfile.name }}</h2>
+      <p>{{ parentProfile.email }}</p>
     </div>
 
     <!-- Baby Profiles Section -->
     <div class="baby-profiles">
-      <p class="section-title">Select Baby Profile</p>
+      <p class="section-title">Selected Baby</p>
+
+      <!-- List all babies -->
       <div class="baby-list">
-        <div class="baby-card selected">
-          <div class="baby-img-wrapper selected">
-            <img src="assets/profile.png" class="baby-img" />
-          </div>
-          <p>Naif</p>
-        </div>
-        <div class="baby-card">
+        <div 
+          *ngFor="let baby of babies" 
+          class="baby-card" 
+          [class.selected]="baby.id === selectedBabyId"
+          (click)="selectBaby(baby)"
+        >
           <div class="baby-img-wrapper">
-            <img src="assets/profile2.webp" class="baby-img" />
+            <img [src]="baby.profileImage || 'assets/images/profile-avater.png'" class="baby-img" />
           </div>
-          <p>Nora</p>
-        </div>
-        <div class="baby-card add">
-          <div class="add-circle">
-            <ion-icon name="add-outline"></ion-icon>
-          </div>
-          <p>Add Baby</p>
+          <p>{{ baby.name }}</p>
         </div>
       </div>
     </div>
 
     <!-- Baby Profile Form Fields -->
-    <ion-list class="form-list">
-      <ion-item lines="none" class="profile-field">
-        <ion-icon name="person-outline" slot="start" color="dark"></ion-icon>
-        <ion-input [value]="profile.name"></ion-input>
-      </ion-item>
-      
-      <ion-item lines="none" class="profile-field">
-        <ion-icon name="calendar-outline" slot="start" color="dark"></ion-icon>
-        <ion-input [value]="profile.dob"></ion-input>
-      </ion-item>
-      
-      <ion-item lines="none" class="profile-field">
-        <ion-icon name="male-outline" slot="start" color="dark"></ion-icon>
-        <ion-input [value]="profile.gender"></ion-input>
-      </ion-item>   
 
-      <!-- Allergies Section -->
-      <ion-item class="allergies-item" lines="none">
-        <ion-label position="stacked">Allergies</ion-label>
-        <div class="allergies-content">
-          <div class="check-icon">
-            <ion-icon name="checkmark" class="checkmark-icon"></ion-icon>
-          </div>
-          <p class="allergy-text">{{ profile.allergies }}</p>
-        </div>
-      </ion-item>
-    </ion-list>
+    <!-- Baby Name -->
+    <ion-item class="profile-field">
+      <ion-icon name="person-outline" slot="start" color="medium"></ion-icon>
+      <ion-input [(ngModel)]="babyProfile.name" [readonly]="!editMode"></ion-input>
+    </ion-item>
 
-    <!-- Toggle Default Profile -->
-    <div class="default-toggle">
-      <ion-label>Set as default profile</ion-label>
-      <ion-toggle color="tertiary"></ion-toggle>
+    <!-- Birthdate -->
+    <ion-item class="profile-field" (click)="editMode ? openCalendar() : null">
+      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-label *ngIf="!babyProfile.birthDate">Select baby's birth date</ion-label>
+      <ion-label *ngIf="babyProfile.birthDate">{{ babyProfile.birthDate }}</ion-label>
+    </ion-item>
+
+    <!-- Calendar Picker -->
+    <div *ngIf="editMode && isCalendarOpen" class="calendar-dropdown">
+      <ion-datetime
+        presentation="date"
+        (ionChange)="selectDate($event)"
+        [value]="babyProfile.birthDate"
+      ></ion-datetime>
+      <ion-button expand="block" (click)="closeCalendar()">Confirm</ion-button>
     </div>
+
+    <!-- Gender Selection -->
+    <ion-item class="profile-field" lines="none">
+      <ion-icon name="male-female-outline" slot="start"></ion-icon>
+      <ion-radio-group [(ngModel)]="babyProfile.gender" *ngIf="editMode" name="gender" class="gender-radio-group">
+        <ion-item lines="none" class="radio-inline">
+          <ion-radio slot="start" value="Male" class="custom-radio"></ion-radio>
+          <ion-label>Male</ion-label>
+        </ion-item>
+        <ion-item lines="none" class="radio-inline">
+          <ion-radio slot="start" value="Female" class="custom-radio"></ion-radio>
+          <ion-label>Female</ion-label>
+        </ion-item>
+      </ion-radio-group>
+      <ion-label *ngIf="!editMode">{{ babyProfile.gender }}</ion-label>
+    </ion-item>
+
+    <!-- Allergies Section -->
+    <div class="allergy-box" *ngIf="editMode">
+      <label class="allergy-title">Baby Allergies</label>
+      <div class="allergy-options">
+        <ion-item lines="none" *ngFor="let allergy of allergies" class="allergy-item">
+          <ion-checkbox slot="start" [(ngModel)]="allergy.checked"></ion-checkbox>
+          <ion-label>{{ allergy.name }}</ion-label>
+        </ion-item>
+      </div>
+    </div>
+
+    <!-- Allergies Text Display (Read Only) -->
+    <ion-item *ngIf="!editMode" lines="none" class="profile-field">
+      <ion-icon name="medkit-outline" slot="start" color="dark"></ion-icon>
+      <ion-textarea [value]="babyProfile.allergiesFormatted" readonly></ion-textarea>
+    </ion-item>
 
     <!-- Action Buttons -->
     <div class="action-buttons">
-      <ion-button expand="block" class="edit-btn" fill="solid">
-        Edit Profile
+      <ion-button expand="block" class="edit-btn" fill="solid" (click)="toggleEditMode()">
+        {{ editMode ? 'Save Changes' : 'Edit Baby Profile' }}
       </ion-button>
-    
-      <ion-button expand="block" class="delete-btn" fill="solid">
+
+      <ion-button expand="block" class="delete-btn" fill="solid" (click)="deleteBabyProfile()">
         Delete Profile
       </ion-button>
     </div>

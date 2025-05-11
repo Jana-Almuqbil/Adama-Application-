@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
-import { setDoc, doc as firestoreDoc } from '@angular/fire/firestore';
+import { addDoc, doc as firestoreDoc } from '@angular/fire/firestore';
 import { collection, getDocs, updateDoc } from '@firebase/firestore';
 
 @Component({
@@ -94,82 +94,59 @@ export class ResultPage implements OnInit {
     }
   }
   
-  async saveNewCase(babyId: string) {
-    try {
-      
-      // Check how many cases this baby already has
-      const casesRef = collection(this.firestore, `New_Case/${babyId}/cases`);
-      const snapshot = await getDocs(casesRef);
-      const nextCaseNumber = snapshot.size + 1;
+ async saveNewCase(babyId: string) {
+  try {
+    const casesCollectionRef = collection(this.firestore, `New_Case/${babyId}/cases`);
 
-      // Generate new case ID 
-      const caseId = `C${nextCaseNumber}`;
-      localStorage.setItem('savedCaseId', caseId); 
-    
-      const caseRef = firestoreDoc(this.firestore, `New_Case/${babyId}/cases/${caseId}`);
-      await setDoc(caseRef, {
-        caseId,
-        babyId: babyId,
-        diseaseName: this.diseaseName,
-        confidence: this.confidence,
-        treatmentName: this.diagnosisInfo.treatmentName,
-        instructions: this.diagnosisInfo.instructions,
-        symptoms: this.symptoms,
-        uploadedImage: this.caseImage[0],
-        timestamp: new Date(),
-        status: this.status,
-        doctorNotes: this.doctorNotes
-      });
+    const newCaseDoc = await addDoc(casesCollectionRef, {
+      babyId: babyId,
+      diseaseName: this.diseaseName,
+      confidence: this.confidence,
+      treatmentName: this.diagnosisInfo.treatmentName,
+      instructions: this.diagnosisInfo.instructions,
+      symptoms: this.symptoms,
+      uploadedImage: this.caseImage[0],
+      timestamp: new Date(),
+      status: this.status,
+      doctorNotes: this.doctorNotes
+    });
 
-      // Save the case
-      const caseData = {
-        caseId: caseId,
-        babyId: babyId,
-        diseaseName: this.diseaseName,
-        confidence: this.confidence,
-        treatmentName: this.diagnosisInfo.treatmentName,
-        instructions: this.diagnosisInfo.instructions,
-        symptoms: this.symptoms,
-        uploadedImage: this.caseImage[0],
-        timestamp: new Date().toISOString(),
-        status: this.status,
-        doctorNotes: this.doctorNotes
-      };
-      
-      localStorage.setItem('babyCase', JSON.stringify({
-        babyId: babyId,
-        caseId: caseId //store 
-      }));
+    // Important: Store the generated caseId
+    localStorage.setItem('savedCaseId', newCaseDoc.id);
+    console.log('New case saved successfully with ID:', newCaseDoc.id);
 
-      console.log('New case saved successfully');
-    } catch (error) {
-      console.error('Error saving new case:', error);
-    }
+  } catch (error) {
+    console.error('Error saving new case:', error);
   }
-  
+}
+
   // SAve into Doctor Notifications
-  async confirmVerification() {  
-    this.showConfirmAlert = true;
-  
-    const babyId = localStorage.getItem('selectedBabyId') || 'unknown-baby-id';
-    const caseId = localStorage.getItem('savedCaseId');  
+  async confirmVerification() {
+  this.showConfirmAlert = true;
 
-    if (!caseId) {
-      console.error('No caseId found in localStorage');
-      return;
-    }
+  const babyId = localStorage.getItem('selectedBabyId')|| localStorage.getItem('selectedBabyId');
+  const caseId = localStorage.getItem('savedCaseId') || localStorage.getItem('selectedCaseId');
 
-    try {
-      const caseRef = firestoreDoc(this.firestore, `New_Case/${babyId}/cases/${caseId}`);
-      await updateDoc(caseRef, {
-        status: 'Pending Review By Doctor'
-      });
-
-      console.log('Case status updated successfully');
-    } catch (error) {
-      console.error('Error sending notification to doctor:', error);
-    }
+  if (!babyId || !caseId) {
+    console.error('Missing babyId or caseId!');
+    return;
   }
+
+  try {
+    const caseRef = firestoreDoc(this.firestore, `New_Case/${babyId}/cases/${caseId}`);
+    await updateDoc(caseRef, {
+      status: 'Pending Review By Doctor'
+    });
+
+    console.log('Case status updated successfully');
+  } catch (error) {
+    console.error('Error sending notification to doctor:', error);
+  }
+  console.log('babyId:', babyId);
+console.log('caseId:', caseId);
+
+}
+
   
   async similarImages (diseaseName: string) {
     if (diseaseName === 'Eczema') {
@@ -183,49 +160,94 @@ export class ResultPage implements OnInit {
     }
   }
 
-  ngOnInit() {
+async ngOnInit() {
+  const selectedCase = JSON.parse(localStorage.getItem('selectedVerifiedCase') || '{}');
 
-    // Diagnosis result
+  if (selectedCase && selectedCase.name) {
+    // Coming from clicked old case
+    this.diseaseName = selectedCase.name;
+    this.confidence = parseFloat(selectedCase.accuracy) || 0;
+    this.caseImage = [selectedCase.image];
+    this.symptoms = selectedCase.symptoms || [];
+
+    if (selectedCase.caseId) {
+      localStorage.setItem('selectedCaseId', selectedCase.caseId);
+    }
+    if (selectedCase.babyId) {
+      localStorage.setItem('selectedBabyId', selectedCase.babyId);
+    } else {
+      await this.fetchBabyIdFromFirestore();
+    }
+  } else {
+    // Coming from new scan
     this.diseaseName = localStorage.getItem('predictedClass') || '';
     this.confidence = parseFloat(localStorage.getItem('confidence') || '0');
-  
+
     const savedImage = localStorage.getItem('uploadedImage');
     this.caseImage = savedImage ? [savedImage] : [];
-  
-    localStorage.setItem('diseaseName', this.diseaseName);
-    localStorage.setItem('confidence', this.confidence.toString());
 
-    this.loadTreatmentInfo(this.diseaseName).then(() => {
-      const babyId = localStorage.getItem('selectedBabyId') || 'unknown-baby-id';
-      this.saveNewCase(babyId);
-    });
-
-    // Similar images
-    this.similarImages(this.diseaseName);
-
-    // Body affected answer
     const savedSymptom = localStorage.getItem('selectedSymptom');
     if (savedSymptom) {
-      this.symptoms = [savedSymptom]; 
+      this.symptoms.push(savedSymptom);
     }
 
-    
     const symptomAnswers = JSON.parse(localStorage.getItem('symptomAnswers') || '{}');
-
     const yesNoLabels = [
       'Fever',
       'Family history of skin conditions',
       'Recent bacterial infection',
       'Pets in the house'
     ];
-
-  
     for (let i = 0; i < yesNoLabels.length; i++) {
       const answer = symptomAnswers[i];
       if (answer === 'yes') {
         this.symptoms.push(` ${yesNoLabels[i]}`);
-      } 
+      }
+    }
+  }
+
+  localStorage.setItem('diseaseName', this.diseaseName);
+  localStorage.setItem('confidence', this.confidence.toString());
+
+  this.loadTreatmentInfo(this.diseaseName);
+  this.similarImages(this.diseaseName);
+}
+
+
+async fetchBabyIdFromFirestore() {
+  try {
+    const currentBabyId = localStorage.getItem('currentBabyId');
+    if (!currentBabyId) {
+      console.warn('No currentBabyId found.');
+      return;
     }
 
+    const casesRef = collection(this.firestore, `New_Case/${currentBabyId}/cases`);
+    const snapshot = await getDocs(casesRef);
+
+    if (!snapshot.empty) {
+      const firstCase = snapshot.docs[0];
+      const caseData = firstCase.data();
+
+      const caseId = firstCase.id;
+      localStorage.setItem('selectedCaseId', caseId);
+      localStorage.setItem('selectedBabyId', currentBabyId);
+
+      console.log('Fetched caseId and babyId from Firestore:', caseId, currentBabyId);
+    } else {
+      console.warn('No cases found for this baby.');
     }
+  } catch (error) {
+    console.error('Error fetching babyId and caseId from Firestore:', error);
+  }
+}
+
+
+async ionViewWillEnter() {
+  console.log('Result Page is reloading data...');
+  this.ngOnInit();  
+}
+
+
+
   }

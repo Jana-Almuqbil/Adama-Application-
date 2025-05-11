@@ -45,6 +45,7 @@ export class HistoryPage {
       const data = doc.data();
 
       return {
+        id: doc.id,
         name: data['diseaseName'] || 'Unknown',
         date: new Date(data['timestamp']?.seconds * 1000).toLocaleDateString(),
         accuracy: parseFloat(data['confidence']).toFixed(0),
@@ -119,19 +120,17 @@ export class HistoryPage {
   }
   
   openCase(record: any) {
-    const fullRecord = {
-      diseaseName: record.name,
-      confidence: record.accuracy,
-      uploadedImage: record.image,
-      status: record.status,
-      symptoms: record.symptoms,
-      treatmentName: record.treatmentName,
-      instructions: record.instructions,
-    };
-
-    localStorage.setItem('selectedVerifiedCase', JSON.stringify(fullRecord));
+    const babyId = localStorage.getItem('selectedBabyId');
+    
+    if (!babyId || !record.id) {
+      console.error('Missing baby ID or case ID');
+      return;
+    }
+  
+    localStorage.setItem('selectedBabyId', babyId);
+    localStorage.setItem('selectedCaseId', record.id);
+  
     this.navCtrl.navigateForward('/report-verified-case');
   }
-  
   
 }

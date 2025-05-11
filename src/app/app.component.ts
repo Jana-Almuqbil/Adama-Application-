@@ -9,6 +9,13 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class AppComponent {
+
+
+static babyName$ = new BehaviorSubject<string>('');
+static babyImage$ = new BehaviorSubject<string>('assets/images/profile-avater.png');
+static babyId$ = new BehaviorSubject<string>('');
+
+
 takePhoto() {
 throw new Error('Method not implemented.');
 }
@@ -36,7 +43,13 @@ throw new Error('Method not implemented.');
     this.imageService.takePhotoFromMenu();
   }
 
+  getBabyId(): string {
+  return localStorage.getItem('selectedBabyId') || 'unknown-baby-id';
+}
+
   ngOnInit() {
     this.babyId = localStorage.getItem('selectedBabyId')|| '{}';
   }
+
+  
 }

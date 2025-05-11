@@ -19,6 +19,7 @@ export class CreateBabyPage {
   isDefault = false;
   customAllergy = '';
   babyImage: string | null = null;
+  
 
   // Predefined allergies list
   allergies = [
@@ -75,12 +76,14 @@ export class CreateBabyPage {
 
     // Create Firestore document for the baby
     const babyDoc = {
-      name: this.babyName,
-      birthDate: this.babyBirthdate,
-      gender: this.gender,
-      allergies: selectedAllergies,
-      isDefault: this.isDefault,
-      profileImage: '',
+     babyId: this.babyName,  
+     name: this.babyName,
+     birthDate: this.babyBirthdate,
+     gender: this.gender,
+     allergies: selectedAllergies,
+     isDefault: this.isDefault,
+     profileImage: '',
+     parentId: parentId  
     };
 
     const babyDocRef = doc(this.firestore, `Parents/${parentId}/babies/${this.babyName}`);

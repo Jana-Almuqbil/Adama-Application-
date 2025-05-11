@@ -27,7 +27,7 @@ export class VerificationStatusPage {
   
     snapshot.forEach(doc => {
       const data = doc.data();
-      if (data['status'] === 'Verified') {
+       if (data['status'] === 'Verified' || data['status'] === 'Opened by Doctor Ahmed, and waiting for verification') {
         const submittedDate = this.formatTimestamp(data['timestamp']?.seconds);
         const verifiedDate = this.formatTimestamp(data['verifiedAt']?.seconds);
   
@@ -35,6 +35,7 @@ export class VerificationStatusPage {
           title: `${data['diseaseName']} - Submitted on ${submittedDate}`,
           isExpanded: false,
           ready: true,
+          caseId: doc.id,
           data: data,
           timestamp: data['timestamp']?.seconds || 0,  
           steps: [
@@ -62,20 +63,18 @@ export class VerificationStatusPage {
     this.verificationDataList[index].isExpanded = !this.verificationDataList[index].isExpanded;
   }
 
-  openReport(caseData: any) {
-    const fullRecord = {
-      diseaseName: caseData.diseaseName,
-      confidence: caseData.confidence,
-      uploadedImage: caseData.uploadedImage,
-      status: caseData.status,
-      symptoms: caseData.symptoms || [],
-      treatmentName: caseData.treatmentName || 'No treatment found',
-      instructions: caseData.instructions || 'No instructions available',
-    };
-
-    localStorage.setItem('selectedVerifiedCase', JSON.stringify(fullRecord));
+openReport(item: any) {
+  if (item && item.caseId) {
+    localStorage.setItem('selectedCaseId', item.caseId);  
+    localStorage.setItem('selectedBabyId', localStorage.getItem('selectedBabyId') || 'unknown-baby-id');
     this.navCtrl.navigateForward('/report-verified-case');
+  } else {
+    console.error('Invalid item structure:', item);
   }
+}
+
+
+
 
   goBack() {
     this.navCtrl.back();

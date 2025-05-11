@@ -180,13 +180,15 @@ ion-toggle {
 
 /* ====== Submit Button ====== */
 .signup-btn {
-  margin: 40px 20px;
-  --background: linear-gradient(to bottom, #0F5252, #96d1c9);
-  border-radius: 25px;
-  font-size: 20px;
-  color: white;
+  --background: linear-gradient(180deg, #61C0BF, #0F5252) !important;
+  --color: white;
+  font-size: 18px;
+  border-radius: 20px !important;
+  overflow: hidden;  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
-
 /* ====== Error Message ====== */
 .error-message {
   color: red;

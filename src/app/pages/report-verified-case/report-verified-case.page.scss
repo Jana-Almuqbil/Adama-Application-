@@ -583,3 +583,35 @@ ion-card-content li {
   color: #145C46 !important;
   font-weight: 600;
 }
+
+.verification-status {
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.verified-label {
+  color: #2ecc71; 
+}
+
+.waiting-label {
+  color: #f39c12; 
+}
+
+.not-verified-label {
+  color: red; 
+}
+
+
+.verified-icon,
+.waiting-icon,
+.not-verified-icon{
+  margin-right: 8px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}

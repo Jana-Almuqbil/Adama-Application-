@@ -2,8 +2,8 @@
 <ion-menu *ngIf="userRole === 'parent'" side="start" menuId="main-menu" contentId="main-content" swipeGesture="true">
   <ion-content class="menu-content">
     <div class="menu-header"(click)="goToSelectBaby()">
-      <img src="assets/profile.png" class="menu-profile-pic" alt="Profile">
-      <p class="menu-profile-name"> Baby {{babyId}}</p>
+      <img src="assets\images\profile-avater.png" class="menu-profile-pic" alt="Profile">
+      <p class="menu-profile-name"> Baby {{getBabyId()}}</p>
     </div>
 
     <ion-list class="menu-list">

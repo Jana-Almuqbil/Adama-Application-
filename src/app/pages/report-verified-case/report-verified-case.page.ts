@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-report-verified-case',
@@ -10,7 +11,7 @@ import { NavController } from '@ionic/angular';
 
 export class ReportVerifiedCasePage {
 
-  // Variables for storing data from localStorage
+  // Variables for storing data
   diseaseName: string = '';
   confidence: number = 0;
   uploadedImage: string = '';
@@ -28,30 +29,42 @@ export class ReportVerifiedCasePage {
 
   activeTab = 'about';
 
-  constructor(private navCtrl: NavController) {}
+  constructor(private navCtrl: NavController, private firestore: Firestore) {}
 
-  ngOnInit() {
-    const savedCase = localStorage.getItem('selectedVerifiedCase');
-    if (savedCase) {
-      const selectedVerifiedCase = JSON.parse(savedCase);
-  
-      this.diseaseName = selectedVerifiedCase.diseaseName || selectedVerifiedCase.predictedClass || 'Unknown';
-      this.confidence = selectedVerifiedCase.confidence;
-      this.uploadedImage = selectedVerifiedCase.uploadedImage;
-      this.caseImages = selectedVerifiedCase.caseImages || [];
-      this.symptoms = selectedVerifiedCase.symptoms || [];
-      this.treatmentName = selectedVerifiedCase.treatmentName || selectedVerifiedCase.treatment || 'No treatment found';
-      this.instructions = selectedVerifiedCase.instructions || 'No instructions available';
-      this.status = selectedVerifiedCase.status;
+  async ionViewWillEnter() {
+    const babyId = localStorage.getItem('selectedBabyId');
+    const caseId = localStorage.getItem('selectedCaseId');
 
-      this.loadSimilarImages(this.diseaseName);
-      console.log('Loaded verified case:', selectedVerifiedCase);
-    } else {
-      console.error('No case data found in localStorage');
+    if (!babyId || !caseId) {
+      console.error('Baby ID or Case ID missing in localStorage.');
+      return;
     }
-  
 
-    console.log('Predicted class:', this.diseaseName);
+    try {
+      const caseDocRef = doc(this.firestore, `New_Case/${babyId}/cases/${caseId}`);
+      const caseSnapshot = await getDoc(caseDocRef);
+
+      if (caseSnapshot.exists()) {
+        const data = caseSnapshot.data();
+        
+        this.diseaseName = data['diseaseName'] || data['predictedClass'] || 'Unknown';
+        this.confidence = parseFloat(data['confidence']) || 0;
+        this.uploadedImage = data['uploadedImage'] || 'assets/placeholder.jpg';
+        this.caseImages = data['caseImages'] || [];
+        this.symptoms = data['symptoms'] || [];
+        this.treatmentName = data['treatmentName'] || data['treatment'] || 'No treatment found';
+        this.instructions = data['instructions'] || 'No instructions available';
+        this.status = data['status'] || 'Not specified';
+
+        this.loadSimilarImages(this.diseaseName);
+
+        console.log('Loaded verified case from Firestore:', data);
+      } else {
+        console.error('No such case document found.');
+      }
+    } catch (error) {
+      console.error('Error fetching case from Firestore:', error);
+    }
   }
 
   loadSimilarImages(disease: string) {
@@ -73,4 +86,6 @@ export class ReportVerifiedCasePage {
   getParentAnswersKeys(obj: any): string[] {
     return obj ? Object.keys(obj) : [];
   }
+
+  
 }

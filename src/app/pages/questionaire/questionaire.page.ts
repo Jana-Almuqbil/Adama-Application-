@@ -21,7 +21,7 @@ export class QuestionairePage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.navigateBack('/photo-page'); 
+    this.navCtrl.navigateBack('/photo'); 
   }
 
   goToNextPage() {
