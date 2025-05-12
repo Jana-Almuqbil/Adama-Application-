@@ -14,12 +14,13 @@
   border-bottom-right-radius: 30px;
 }
 
+/* Back button (left side of header) */
 .back-button {
   position: absolute;
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  background: white;
+  background: white !important;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -30,9 +31,10 @@
 }
 
 .back-button ion-icon {
-  color: #145c46 !important;
+  color: #145C46 !important;
   font-size: 20px;
 }
+
 
 .header-title {
   font-size: 22px;

@@ -63,7 +63,7 @@
       </ion-menu-toggle>
 
       <ion-menu-toggle auto-hide="true">
-        <ion-item routerLink="/login" class="menu-item" lines="none">
+        <ion-item (click)="logout()" class="menu-item" lines="none">
           <ion-icon slot="start" name="log-out-outline"></ion-icon>
           <ion-label>Logout</ion-label>
         </ion-item>

@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 
 // Interface for typing the case data
 interface DoctorNotification {
+  caseId: string;
   predictedClass: string;
   confidence: number;
   treatment: string;
@@ -21,7 +22,7 @@ interface DoctorNotification {
   standalone: false,
 })
 export class VerifiedCasesPage implements OnInit {
-
+ 
   // Array to hold all verified cases
   verifiedCases: any[] = [];
 
@@ -34,15 +35,16 @@ export class VerifiedCasesPage implements OnInit {
   status: string = '';
   read: boolean = false;
   symptoms: string[] = [];
-
+  caseId : string = '';
+  babyId = '';
   constructor(private navCtrl: NavController, private firestore: Firestore) {}
 
   // Runs when the page is about to be entered
   async ionViewWillEnter() {
     this.verifiedCases = [];
 
-    const notifRef = collection(this.firestore, 'New_Case');
-    const snapshot = await getDocs(notifRef);
+    const newCaseRef = collection(this.firestore, 'New_Case');
+    const snapshot = await getDocs(newCaseRef);
 
     // Loop through each baby and fetch their verified cases
     for (const docSnap of snapshot.docs) {
@@ -53,6 +55,8 @@ export class VerifiedCasesPage implements OnInit {
       caseSnapshot.forEach(doc => {
         const caseData = doc.data() as DoctorNotification;
         if (caseData.status === 'Verified') {
+          localStorage.setItem("selectedBabyId", babyId);
+          localStorage.setItem("selectedCaseId", doc.id);
           this.verifiedCases.push({
             ...caseData,
             caseId: doc.id,
@@ -78,6 +82,7 @@ export class VerifiedCasesPage implements OnInit {
   // Open detailed report for a selected verified case
   openReport(caseItem: any) {
     localStorage.setItem('selectedVerifiedCase', JSON.stringify(caseItem));
+
     this.navCtrl.navigateForward('/report-verified-case');
   }
 
@@ -91,6 +96,8 @@ export class VerifiedCasesPage implements OnInit {
       this.uploadedImage = selectedVerifiedCase.uploadedImage;
       this.symptoms = selectedVerifiedCase.symptoms;
       this.treatment = selectedVerifiedCase.treatmentName;
+      this.caseId = selectedVerifiedCase.caseId;
+      this.babyId = selectedVerifiedCase.babyId;
     } else {
       console.error('No verified case found in localStorage');
     }

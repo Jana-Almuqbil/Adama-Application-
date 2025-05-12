@@ -14,7 +14,12 @@ export class VerificationStatusPage {
   constructor(private navCtrl: NavController, private firestore: Firestore) {}
 
   async ionViewWillEnter() {
-    const babyId = localStorage.getItem('selectedBabyId');
+
+  const babyId = localStorage.getItem('selectedBabyId')|| localStorage.getItem('selectedBabyId');
+
+   console.log('babyId', babyId);
+    
+
     if (!babyId) {
       console.error('No baby ID found');
       return;
@@ -27,7 +32,7 @@ export class VerificationStatusPage {
   
     snapshot.forEach(doc => {
       const data = doc.data();
-       if (data['status'] === 'Verified' || data['status'] === 'Opened by Doctor Ahmed, and waiting for verification') {
+       if (data['status'] === 'Verified' || data['status'] === 'Opened by Doctor Ahmed, and waiting for verification' ||   data['status'] === 'Pending Review By Doctor' ) {
         const submittedDate = this.formatTimestamp(data['timestamp']?.seconds);
         const verifiedDate = this.formatTimestamp(data['verifiedAt']?.seconds);
   
@@ -62,16 +67,11 @@ export class VerificationStatusPage {
   toggleDetails(index: number) {
     this.verificationDataList[index].isExpanded = !this.verificationDataList[index].isExpanded;
   }
+ openReport(caseItem: any) {
+    localStorage.setItem('selectedVerifiedCase', JSON.stringify(caseItem));
 
-openReport(item: any) {
-  if (item && item.caseId) {
-    localStorage.setItem('selectedCaseId', item.caseId);  
-    localStorage.setItem('selectedBabyId', localStorage.getItem('selectedBabyId') || 'unknown-baby-id');
     this.navCtrl.navigateForward('/report-verified-case');
-  } else {
-    console.error('Invalid item structure:', item);
   }
-}
 
 
 

@@ -29,6 +29,7 @@ export class ReportVerifiedCasePage {
 
   activeTab = 'about';
 
+
   constructor(private navCtrl: NavController, private firestore: Firestore) {}
 
   async ionViewWillEnter() {

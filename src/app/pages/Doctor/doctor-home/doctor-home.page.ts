@@ -33,9 +33,12 @@ export class DoctorHomePage implements OnInit {
 
     // Loop through each baby document
     for (const docSnap of snapshot.docs) {
+      
       const babyId = docSnap.id;
       const caseRef = collection(this.firestore, `New_Case/${babyId}/cases`);
       const caseSnapshot = await getDocs(caseRef);
+
+      
 
       // Check each case for status
       caseSnapshot.forEach(caseDoc => {
@@ -64,4 +67,7 @@ export class DoctorHomePage implements OnInit {
     localStorage.setItem('babyCase', JSON.stringify(caseItem));
     this.navCtrl.navigateForward('/case-details');
   }
+
+
+  
 }

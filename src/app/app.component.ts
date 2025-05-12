@@ -56,7 +56,6 @@ throw new Error('Method not implemented.');
   ngOnInit() {
     this.babyId = localStorage.getItem('selectedBabyId')|| '{}';
   }
-
 async logout() {
   const alert = await this.alertController.create({
     header: 'Confirm Logout',
@@ -65,13 +64,15 @@ async logout() {
       {
         text: 'Cancel',
         role: 'cancel',
+        cssClass: 'alert-cancel-button',
         handler: () => {
-          console.log('Logout canceled.');
+          console.log('Logout canceled');
         }
       },
       {
         text: 'Logout',
         role: 'destructive',
+        cssClass: 'alert-logout-button',
         handler: async () => {
           const auth = getAuth();
           try {
